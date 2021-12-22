@@ -68,32 +68,32 @@ const User = require('./User')
 
 //Connecting up the contacts
 
-// User.hasMany(Contacts, {
-//   foreignKey: 'user_id',
+User.hasMany(Contacts, {
+  foreignKey: 'user_id',
 
-// });
+});
 
-// Contacts.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// });
+Contacts.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-// User.hasMany(ContactsInfo, {
-//   foreignKey: 'user_id'
-// })
+User.hasMany(ContactsInfo, {
+  foreignKey: 'user_id'
+})
 
-// ContactsInfo.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// })
+ContactsInfo.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+})
 
-// Contacts.hasMany(ContactsInfo, {
-//   foreignKey: 'blog_id'
-// })
+Contacts.hasMany(ContactsInfo, {
+  foreignKey: 'contacts_id'
+})
 
-// ContactsInfo.belongsTo(Contacts, {
-//   foreignKey: 'blog_id',
-//   onDelete: 'CASCADE'
-// })
+ContactsInfo.belongsTo(Contacts, {
+  foreignKey: 'contacts_id',
+  onDelete: 'CASCADE'
+})
 
 module.exports = { Todos, TodoItems, Notes, NoteItems, Contacts, ContactsInfo, User };
