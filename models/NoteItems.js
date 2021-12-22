@@ -16,7 +16,7 @@ NotesItems.init(
       allowNull: false,
     },
 
-    notesId: {
+    note_id: {
         type: DataTypes.INTEGER,
         references: {
           model: "notes",

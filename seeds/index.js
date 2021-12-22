@@ -5,7 +5,7 @@ const seedContactsInfo = require('./contactsInfo');
 const seedNotes = require('./notes');
 const seedNotesItems = require('./notesItems');
 const seedTodo = require('./todo');
-const seedTodoItems = require('./todoItems');
+const seedTodoItems = require('./todoltems');
 
 
 const sequelize = require('../config/connection');

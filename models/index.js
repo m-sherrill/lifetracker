@@ -1,4 +1,4 @@
-const Todos = require('./Todo')
+const Todo = require('./Todo')
 const TodoItems = require('./TodoItems')
 const Notes = require('./Notes');
 const NoteItems = require('./NoteItems')
@@ -8,65 +8,65 @@ const User = require('./User')
 
 
 // Todo list connection points
-// User.hasMany(Todo, {
-//   foreignKey: 'user_id',
+User.hasMany(Todo, {
+  foreignKey: 'user_id',
 
-// });
+});
 
-// Todo.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// });
+Todo.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-// User.hasMany(TodoItems, {
-//   foreignKey: 'user_id'
-// })
+User.hasMany(TodoItems, {
+  foreignKey: 'user_id'
+})
 
-// TodoItems.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// })
+TodoItems.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+})
 
-// Todo.hasMany(TodoItems, {
-//   foreignKey: 'blog_id'
-// })
+Todo.hasMany(TodoItems, {
+  foreignKey: 'todo_id'
+})
 
-// TodoItems.belongsTo(Todo, {
-//   foreignKey: 'blog_id',
-//   onDelete: 'CASCADE'
-// })
+TodoItems.belongsTo(Todo, {
+  foreignKey: 'todo_id',
+  onDelete: 'CASCADE'
+})
 
 // Notes Connection Points
 
-// User.hasMany(Notes, {
-//   foreignKey: 'user_id',
+User.hasMany(Notes, {
+  foreignKey: 'user_id',
 
-// });
+});
 
-// Notes.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// });
+Notes.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-// User.hasMany(NoteItems, {
-//   foreignKey: 'user_id'
-// })
+User.hasMany(NoteItems, {
+  foreignKey: 'user_id'
+})
 
-// NoteItems.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// })
+NoteItems.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+})
 
-// Notes.hasMany(NoteItems, {
-//   foreignKey: 'blog_id'
-// })
+Notes.hasMany(NoteItems, {
+  foreignKey: 'note_id'
+})
 
-// NoteItems.belongsTo(Notes, {
-//   foreignKey: 'blog_id',
-//   onDelete: 'CASCADE'
-// })
+NoteItems.belongsTo(Notes, {
+  foreignKey: 'note_id',
+  onDelete: 'CASCADE'
+})
 
-//Connecting up the contacts
+// Connecting up the contacts
 
 User.hasMany(Contacts, {
   foreignKey: 'user_id',
@@ -96,4 +96,4 @@ ContactsInfo.belongsTo(Contacts, {
   onDelete: 'CASCADE'
 })
 
-module.exports = { Todos, TodoItems, Notes, NoteItems, Contacts, ContactsInfo, User };
+module.exports = { Todo, TodoItems, Notes, NoteItems, Contacts, ContactsInfo, User };
