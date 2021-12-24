@@ -12,7 +12,7 @@ Feel free to view my work here.
 
 ## Link to GitHub main project page
 
-[Portfolio Project Page on GitHub]()
+[Portfolio Project Page on GitHub](https://github.com/JonkHunkle/Project-1/blob/main/README.md)
 
 ## Link to Deployed Application
 
