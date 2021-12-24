@@ -1,7 +1,6 @@
 
 const router = require('express').Router();
 
-
 // Simple Get Route to try to make sure handlebars is connected
 router.get('/', async (req, res) => {
   try {
@@ -22,3 +21,4 @@ router.get('/notes', async (req, res) => {
 });
 
 module.exports = router;
+
