@@ -1,9 +1,15 @@
-const seedBlog = require('./blogseeds');
-const seedComment = require('./commentseeds');
-const seedUser = require('./userseeds');
+
+const seedUser = require('./user');
+const seedContacts = require('./contacts');
+const seedContactsInfo = require('./contactsInfo');
+const seedNotes = require('./notes');
+const seedNotesItems = require('./notesItems');
+const seedTodo = require('./todo');
+const seedTodoItems = require('./todoltems');
 
 
-const sequelize = require('../config/connections');
+const sequelize = require('../config/connection');
+
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
@@ -12,23 +18,23 @@ const seedAll = async () => {
   await seedUser();
   console.log('\n----- USERS SEEDED -----\n');
 
-  await seedTodo();
-  console.log('\n----- BLOG POSTS SEEDED -----\n');
+  await seedContacts();
+  console.log('\n----- CONTACTS SEEDED -----\n');
 
-  await seedTodoitems();
-  console.log('\n----- COMMENTS SEEDED -----\n');
+  await seedContactsInfo();
+  console.log('\n----- CONTACTS INFO SEEDED -----\n');
+
+  await seedTodo();
+  console.log('\n----- TODO SEEDED -----\n');
+
+  await seedTodoItems();
+  console.log('\n----- TODO ITEMS SEEDED -----\n');
 
   await seedNotes();
-  console.log('\n----- BLOG POSTS SEEDED -----\n');
+  console.log('\n----- NOTES SEEDED -----\n');
 
-  await seedNoteItems();
-  console.log('\n----- COMMENTS SEEDED -----\n');
-
-  await seedContacts();
-  console.log('\n----- BLOG POSTS SEEDED -----\n');
-
-  await seedContactItems();
-  console.log('\n----- COMMENTS SEEDED -----\n');
+  await seedNotesItems();
+  console.log('\n----- NOTES ITEMS SEEDED -----\n');
 
   process.exit(0);
 };

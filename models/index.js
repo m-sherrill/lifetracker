@@ -1,13 +1,99 @@
-const todo = require('./todo.js');
-const note = require('./note');
-const calendar = require('./calendar');
+const Todo = require('./Todo')
+const TodoItems = require('./TodoItems')
+const Notes = require('./Notes');
+const NoteItems = require('./NoteItems')
+const Contacts = require('./Contacts')
+const ContactsInfo = require('./ContactsInfo')
+const User = require('./User')
 
-note.hasMany(calendar, {
-  foreignKey: 'node_id',
+
+// Todo list connection points
+User.hasMany(Todo, {
+  foreignKey: 'user_id',
+
 });
 
-calendar.belongsTo(note, {
+Todo.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+User.hasMany(TodoItems, {
+  foreignKey: 'user_id'
+})
+
+TodoItems.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+})
+
+Todo.hasMany(TodoItems, {
+  foreignKey: 'todo_id'
+})
+
+TodoItems.belongsTo(Todo, {
+  foreignKey: 'todo_id',
+  onDelete: 'CASCADE'
+})
+
+// Notes Connection Points
+
+User.hasMany(Notes, {
+  foreignKey: 'user_id',
+
+});
+
+Notes.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+User.hasMany(NoteItems, {
+  foreignKey: 'user_id'
+})
+
+NoteItems.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+})
+
+Notes.hasMany(NoteItems, {
+  foreignKey: 'note_id'
+})
+
+NoteItems.belongsTo(Notes, {
   foreignKey: 'note_id',
+  onDelete: 'CASCADE'
+})
+
+// Connecting up the contacts
+
+User.hasMany(Contacts, {
+  foreignKey: 'user_id',
+
 });
 
-module.exports = { todo, note, calendar };
+Contacts.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+User.hasMany(ContactsInfo, {
+  foreignKey: 'user_id'
+})
+
+ContactsInfo.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+})
+
+Contacts.hasMany(ContactsInfo, {
+  foreignKey: 'contacts_id'
+})
+
+ContactsInfo.belongsTo(Contacts, {
+  foreignKey: 'contacts_id',
+  onDelete: 'CASCADE'
+})
+
+module.exports = { Todo, TodoItems, Notes, NoteItems, Contacts, ContactsInfo, User };
