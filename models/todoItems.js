@@ -16,10 +16,6 @@ todoItems.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    starting_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
     todo_id: {
         type: DataTypes.INTEGER,
         references: {
@@ -36,7 +32,9 @@ todoItems.init(
   },
 },
   {
+
     sequelize,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'todoItems',

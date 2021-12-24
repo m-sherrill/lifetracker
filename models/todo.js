@@ -15,11 +15,6 @@ todo.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    starting_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
- 
     user_id: {
         type: DataTypes.INTEGER,
         references: {
@@ -30,6 +25,7 @@ todo.init(
   },
   {
     sequelize,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'todo',
