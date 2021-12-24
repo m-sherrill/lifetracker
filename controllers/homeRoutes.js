@@ -1,6 +1,6 @@
 
 const router = require('express').Router();
-
+const { Notes } = require('../models')
 // Simple Get Route to try to make sure handlebars is connected
 router.get('/', async (req, res) => {
   try {
@@ -13,7 +13,9 @@ router.get('/', async (req, res) => {
 });
 router.get('/notes', async (req, res) => {
   try {
-    res.render('notes');
+    const noteData = await Notes.findAll()
+    const notes = noteData.map((project) => project.get({ plain: true }))
+    res.render('notes', { notes });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
