@@ -19,12 +19,14 @@
     <h1 class='text-4xl'>Your Notes</h1>
     <hr>
 
-    <div id="notes" class="row container-fluid flex flex-col flex-wrap justify-around">
+    <div id="notes" class="row container-fluid flex flex-wrap justify-around">
 
         {{#each notes as |note|}}
-        <p class='text-center text-2xl'>{{note.title}}</p>
-        <ul class='text-center'>Created at: {{format_date note.createdAt}}</ul>
-        <ul class='text-center text-xs'>Last Update: {{format_date note.updatedAt}}</ul>
+        <span class='p-8'>
+            <p class='text-center text-2xl'>{{note.title}}</p>
+            <ul class='text-center'>Created at: {{format_date note.createdAt}}</ul>
+            <ul class='text-center text-xs'>Last Update: {{format_date note.updatedAt}}</ul>
+        </span>
         {{/each}}
 
     </div>
