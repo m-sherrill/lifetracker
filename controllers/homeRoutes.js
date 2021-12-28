@@ -15,6 +15,7 @@ router.get('/notes', async (req, res) => {
   try {
     const noteData = await Notes.findAll()
     const notes = noteData.map((project) => project.get({ plain: true }))
+    console.log(notes)
     res.render('notes', { notes });
   } catch (err) {
     console.log(err);
