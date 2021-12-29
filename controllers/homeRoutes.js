@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       attributes: { exclude: ['password'] },
     });
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    const users = userData.map((user) => user.get({ plain: true }));
 
     res.render('home', {
       users,
@@ -27,9 +27,10 @@ router.get('/', async (req, res) => {
 router.get('/notes', withAuth, async (req, res) => {
   try {
     const noteData = await Notes.findAll()
-    const notes = noteData.map((project) => project.get({ plain: true }))
+    const notes = noteData.map((note) => note.get({ plain: true }))
     console.log(notes)
-    res.render('notes', { notes });
+    res.render('notes', { notes,
+      logged_in: req.session.logged_in, });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
