@@ -1,19 +1,13 @@
-<section class=content>
-    <a href="/notes">
-        <header>Notes</header>
-    </a>
-</section>
+<header class='text-center text-7xl'>Notes</header>
 
-<div class="container my-3">
-    <h1>Take your Notes here</h1>
+
+<div class="container my-3 text-center">
+    <h1 class=''>Take your Notes here</h1>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">
-                Add a Note
 
-            </h5>
             <div class="form-group">
-                <textarea class="form-control" id="addTxt" rows="3">
+                <textarea class="form-control w-1/3" id="addTxt" rows="3">
                     </textarea>
             </div>
             <button class="btn btn-primary" id="addBtn" style="background-color:green">
@@ -22,10 +16,19 @@
         </div>
     </div>
     <hr>
-    <h1>Your Notes</h1>
+    <h1 class='text-4xl'>Your Notes</h1>
     <hr>
 
-    <div id="notes" class="row container-fluid">
+    <div id="notes" class="row container-fluid flex flex-wrap justify-around">
+
+        {{#each notes as |note|}}
+        <span class='p-8 border-2 m-4 border-solid border-black'>
+            <p class='text-center text-2xl'>{{note.title}}</p>
+            <ul class='text-center'>Created at: {{format_date note.createdAt}}</ul>
+            <ul class='text-center text-xs'>Last Update: {{format_date note.updatedAt}}</ul>
+        </span>
+        {{/each}}
+
     </div>
 </div>
 

@@ -7,21 +7,33 @@
   <title>Work Life Tracker</title>
   <link rel="stylesheet" type="text/css" href="">
   <link rel="stylesheet" type="text/css" href="">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
-<body>
-  <header>
-    <h1>Welcome to your personal Work-Life Tracker</h1>
-  </header>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/login">Login</a>
-  </nav>
+<body class='bg-blue-100 '>
+  <div class='flex flex-col'>
+    <span class="flex place-self-center">
+      <nav class='py-2 border-2 border-solid border-white flex justify-around w-96'>
+        <a class='px-2 bg-blue-300 hover:bg-blue-500 border-4 border-double border-black hover:border-solid hover:border-4'
+          href="/">Home</a>
+        <a class='px-2 bg-blue-300 hover:bg-blue-500 border-4 border-double border-black hover:border-solid hover:border-4'
+          href="/login">Login</a>
+      </nav>
+    </span>
+    <header class='my-12 flex place-self-center'>
+      <h1 class='text-center text-4xl border-4 border-dashed border-black px-16'> LIFE IS SO EASY TO LIVE </h1>
+    </header>
+  </div>
   <main>
     <div class="content">
       {{{body}}}
     </div>
   </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="./js/user.js"></script>
 </body>
 
 </html>
