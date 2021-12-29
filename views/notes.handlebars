@@ -22,7 +22,7 @@
     <div id="notes" class="row container-fluid flex flex-wrap justify-around">
 
         {{#each notes as |note|}}
-        <span class='p-8'>
+        <span class='p-8 border-2 m-4 border-solid border-black'>
             <p class='text-center text-2xl'>{{note.title}}</p>
             <ul class='text-center'>Created at: {{format_date note.createdAt}}</ul>
             <ul class='text-center text-xs'>Last Update: {{format_date note.updatedAt}}</ul>
