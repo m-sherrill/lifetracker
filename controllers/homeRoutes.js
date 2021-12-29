@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/notes', async (req, res) => {
+router.get('/notes', withAuth, async (req, res) => {
   try {
     const noteData = await Notes.findAll()
     const notes = noteData.map((project) => project.get({ plain: true }))
