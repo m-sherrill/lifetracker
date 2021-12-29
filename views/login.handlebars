@@ -1,50 +1,57 @@
-<div>
-  <div>
-    <h2>Login</h2>
+<div class='flex place-items-center justify-evenly'>
+  <div class=' border-black border-2 border-solid bg-zinc-100 '>
+    <h2 class='mx-2'>Login</h2>
 
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+    <form class="form login-form m-4 border-black border-2 bg-zinc-50 border-solid">
+      <div class="form-group m-2">
+        <label for="email-login">Email:</label>
+        <input class="form-input border-2 border-solid border-black" type="text" id="email-login" />
       </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" autocomplete="on" />
+      <div class="form-group m-2">
+        <label for="password-login">Password:</label>
+        <input class="form-input border-2 border-solid border-black" type="password" id="password-login"
+          autocomplete="on" />
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary" id="loginBtn" type="submit">login</button>
+      <div class="form-group m-2">
+        <button
+          class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
+          id="loginBtn" type="submit">Login</button>
       </div>
-    </form><br /> <br />
+    </form>
   </div>
-  <div>
-    <h2>Signup</h2>
+  <div class='border-black border-2 border-solid bg-zinc-100'>
+    <h2 class='mx-2'>Sign-up</h2>
 
-    <form class="form signup-form">
-      <div class="form-group">
+    <form class="form signup-form m-4 border-black border-2 bg-zinc-50 border-solid">
+      <div class="form-group m-2">
         <label for="first-name-signup">First Name:</label>
-        <input class="form-input" name="first_name" type="text" id="first-name-signup" />
+        <input class="form-input border-2 border-solid border-black" name="first_name" type="text"
+          id="first-name-signup" />
       </div>
-       <div class="form-group">
+      <div class="form-group m-2">
         <label for="last-name-signup">Last Name:</label>
-        <input class="form-input" type="text" name="last_name" id="last-name-signup" />
+        <input class="form-input border-2 border-solid border-black" type="text" name="last_name"
+          id="last-name-signup" />
       </div>
-       <div class="form-group">
+      <div class="form-group m-2">
         <label for="display-name-signup">Username:</label>
-        <input class="form-input" type="text" name="display_name" id="display-name-signup" />
+        <input class="form-input border-2 border-solid border-black" type="text" name="display_name"
+          id="display-name-signup" />
       </div>
-      <div class="form-group">
+      <div class="form-group m-2">
         <label for="email-signup">Email:</label>
-        <input class="form-input" type="text" id="email-signup" />
+        <input class="form-input border-2 border-solid border-black" type="text" id="email-signup" />
       </div>
-      <div class="form-group">
+      <div class="form-group m-2">
         <label for="password-signup">Password:</label>
-        <input class="form-input" type="password" id="password-signup" autocomplete="off"/>
+        <input class="form-input border-2 border-solid border-black" type="password" id="password-signup"
+          autocomplete="off" />
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" id="signupBtn" type="submit">signup</button>
+        <button
+          class=" btn btn-primary px-2 m-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
+          id="signupBtn" type="submit">Sign-up</button>
       </div>
     </form>
   </div>
 </div>
-
-
