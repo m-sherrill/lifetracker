@@ -46,18 +46,3 @@ console.log(response)
   }
 }
 })
-
-$("#logout").on("click", async function() {
-  event.preventDefault();
-  const response = await fetch('/api/users/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-  });
-
-  if (response.ok) {
-    alert("You have logged out!")
-    document.location.replace('/');
-  } else {
-    alert(response.statusText);
-  }
-})
