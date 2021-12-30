@@ -8,7 +8,7 @@ $("#newContactBtn").on("click", async function () {
     const phone = $('#phone-contact').val().trim()
     const email = $('#email-contact').val().trim()
     const notes = $('#notes-contact').val().trim()
-
+    
     if (first_name && last_name && phone && email && notes) {
         const response = await fetch('/api/contacts', {
             method: 'POST',
@@ -35,7 +35,6 @@ $(".updateContact").on("click", async function () {
     const email = $('#email-Ucontact').val()
     const notes = $('#notes-Ucontact').val().trim()
 
-    
     const response = await fetch(`/api/contacts/${id}`, {
         method: 'PUT',
         body: JSON.stringify({ first_name, last_name, phone, email, notes }),
@@ -77,23 +76,25 @@ $(window).on("click", function (event) {
 
 // Update Contact Modal Clicks
 // When the user clicks on the button, open the modal
+
 $('.updateContactOpen').on("click", function () {
+    let id = $(this).data("id")
     event.preventDefault();
     console.log('click')
-    $('#updateContactModal').css("display", "block")
+    $(`#updateContactModal${id}`).css("display", "block")
 })
 
 // When the user clicks on <span> (x), close the modal
 $(".close").on("click", function () {
     event.preventDefault();
-    $('#updateContactModal').css("display", "none")
+    $(`.closeModal`).css("display", "none")
 })
 
 // When the user clicks anywhere outside of the modal, close it
-$(window).on("click", function (event) {
+$(window).on("click", function () {
     event.preventDefault();
-    const modal = $("#updateContactModal")
+    const modal = $(`.closeModal`)
     if (event.target == modal) {
-        $('#updateContactmodal').css("display", "none")
+        $(`.closeModal`).css("display", "none")
     }
 })
