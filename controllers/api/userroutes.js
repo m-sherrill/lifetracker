@@ -18,18 +18,13 @@ router.get('/', async (req, res) => {
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
-    const dbUserData = await User.create({
-      first_name: req.body.firstName,
-      last_name: req.body.lastName,
-      display_name: req.body.displayName,
-      email: req.body.email,
-      password: req.body.password,
-    });
+    const userData = await User.create(req.body);
 
     // Set up sessions with a 'loggedIn' variable set to `true`
     req.session.save(() => {
-      req.session.loggedIn = true;
-      res.status(200).json(dbUserData);
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.status(200).json(userData);
     });
   } catch (err) {
     console.log(err);

@@ -1,28 +1,28 @@
 
 // Create New User via the Sign-up Form
-$("#signupBtn").on("click", async function () {
+$("#signupBtn").on("click", async function() {
     event.preventDefault();
 
-    const firstName = $('#first-name-signup').val().trim();
-    const lastName = $('#last-name-signup').val().trim();
-    const displayName = $('#display-name-signup').val().trim();
-    const email = $('#email-signup').val().trim();
-    const password = $('#password-signup').val().trim();
+  const first_name = $('#first-name-signup').val().trim();
+  const last_name = $('#last-name-signup').val().trim();
+  const display_name = $('#display-name-signup').val().trim();
+  const email = $('#email-signup').val().trim();
+  const password = $('#password-signup').val().trim();
 
-    if (firstName && lastName && displayName && email && password) {
-        const response = await fetch('/api/users', {
-            method: 'POST',
-            body: JSON.stringify({ firstName, lastName, displayName, email, password }),
-            headers: { 'Content-Type': 'application/json' },
-        });
-        console.log(response)
-        if (response.ok) {
-            document.location.replace('/');
-            console.log("success", response)
-        } else {
-            console.log('Failed to sign up.');
-        }
+  if (first_name && last_name && display_name && email && password) {
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({ first_name, last_name, display_name , email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+console.log(response)
+    if (response.ok) {
+      document.location.replace('/');
+      console.log("success", response)
+    } else {
+      console.log('Failed to sign up.');
     }
+}
 })
 
 
