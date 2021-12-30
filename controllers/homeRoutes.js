@@ -1,51 +1,44 @@
 
 const router = require('express').Router();
-const { Notes, User, NoteItems } = require('../models')
+const { Notes, User, NoteItems, Todo, TodoItems, Contacts, ContactsInfo } = require('../models')
 const withAuth = require('../utils/auth')
 
 
+//Homepage Route
 router.get('/', async (req, res) => {
   try {
-    res.render('home');
+    const userData = await User.findAll({
+      attributes: { exclude: ['password'] },
+    });
 
+    const users = userData.map((user) => user.get({ plain: true }));
+
+    res.render('home', {
+      users,
+      // Pass the logged in flag to the template
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get('/notes', async (req, res) => {
+//Notes Page Route
+router.get('/notes', withAuth, async (req, res) => {
   try {
     const noteData = await Notes.findAll()
-    const notes = noteData.map((project) => project.get({ plain: true }))
+    const notes = noteData.map((note) => note.get({ plain: true }))
     console.log(notes)
-    res.render('notes', { notes });
+    res.render('notes', { notes,
+      logged_in: req.session.logged_in, });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get('/dashboard', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Contacts, Comment }],
-    });
 
-    const users = userData.get({ plain: true });
-    console.log(users)
-
-    res.render('dashboard', {
-      users,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
+// Login Route
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
   if (req.session.logged_in) {
