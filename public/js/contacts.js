@@ -1,4 +1,6 @@
+// Add a new contact fetch
 $("#newContactBtn").on("click", async function () {
+    
     event.preventDefault();
 
     const first_name = $('#firstName-contact').val().trim();
@@ -23,31 +25,75 @@ $("#newContactBtn").on("click", async function () {
     }
 })
 
+// Update a contact fetch
+$(".updateContact").on("click", async function () {
+    let id = $(this).data("id")
+    console.log(id)
+    const first_name = $('#firstName-Ucontact').val().trim();
+    const last_name = $('#lastName-Ucontact').val().trim()
+    const phone = $('#phone-Ucontact').val().trim()
+    const email = $('#email-Ucontact').val()
+    const notes = $('#notes-Ucontact').val().trim()
 
-// Get the modal
-var modal = document.getElementById("newContactmodal");
-// Get the button that opens the modal
-var newContactOpen= document.getElementById("newContactOpen");
-var newContactBtn = document.getElementById("newContactBtn");
-var closeBtn = document.getElementsByClassName("close")[0];
+    
+    const response = await fetch(`/api/contacts/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ first_name, last_name, phone, email, notes }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+    console.log(response.body)
+    if (response.ok) {
+        document.location.replace('/contacts');
+        console.log("success", response)
+    } else {
+        console.log('Failed to create a contact');
+    }
 
+})
+
+// New Contact Modal Clicks
 // When the user clicks on the button, open the modal
-newContactOpen.onclick = function () {
+$('#newContactOpen').on("click", function () {
     event.preventDefault();
     console.log('click')
-    modal.style.display = "block";
-}
+    $('#newContactmodal').css("display", "block")
+})
 
 // When the user clicks on <span> (x), close the modal
-closeBtn.onclick = function () {
+$(".close").on("click", function () {
     event.preventDefault();
-    modal.style.display = "none";
-}
+    $('#newContactmodal').css("display", "none")
+})
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
+$(window).on("click", function (event) {
     event.preventDefault();
+    
+    const modal = $("#newContactmodal")
     if (event.target == modal) {
-        modal.style.display = "none";
+        $('#newContactmodal').css("display", "none")
     }
-}
+})
+
+// Update Contact Modal Clicks
+// When the user clicks on the button, open the modal
+$('.updateContactOpen').on("click", function () {
+    event.preventDefault();
+    console.log('click')
+    $('#updateContactModal').css("display", "block")
+})
+
+// When the user clicks on <span> (x), close the modal
+$(".close").on("click", function () {
+    event.preventDefault();
+    $('#updateContactModal').css("display", "none")
+})
+
+// When the user clicks anywhere outside of the modal, close it
+$(window).on("click", function (event) {
+    event.preventDefault();
+    const modal = $("#updateContactModal")
+    if (event.target == modal) {
+        $('#updateContactmodal').css("display", "none")
+    }
+})
