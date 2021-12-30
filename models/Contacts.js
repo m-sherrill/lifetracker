@@ -19,6 +19,22 @@ Contacts.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        phone: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: false,
+            validate: {
+                isEmail: true,
+            },
+        },
+        notes: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {

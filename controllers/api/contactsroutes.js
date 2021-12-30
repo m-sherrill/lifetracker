@@ -18,13 +18,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const dbContactsData = await Contacts.create({
-      first_name: req.body.firstName,
-      last_name: req.body.lastName,
-      display_name: req.body.displayName,
-      email: req.body.email,
-      password: req.body.password,
-    });
+    const dbContactsData = await Contacts.create(req.body);
 
     req.session.save(() => {
       req.session.loggedIn = true;
