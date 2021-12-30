@@ -39,18 +39,22 @@ router.get('/notes', withAuth, async (req, res) => {
 
 
 //Contact Routes 
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get('/contacts', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Blog, Comment }],
+      include: [{ model: Contacts }],
+
+      order: [
+        [ Contacts, 'first_name', 'ASC' ], 
+      ],
     });
 
     const users = userData.get({ plain: true });
     console.log(users)
 
-    res.render('profile', {
+    res.render('contacts', {
       users,
       logged_in: true
     });
