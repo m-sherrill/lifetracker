@@ -4,11 +4,30 @@
 
     <h2>Hello, {{users.first_name}}!</h2>
 
-    <button class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4" id="newContactOpen">Add a New Contact</button>
 
-<!-- The newContact Modal -->
+<!-- The newContact Modal Trigger-->
+    <button class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4" id="newContactOpen">Add a New Contact</button>
+<br /><br />
+Contacts List
+<br /><br />
+{{#each users.contacts as |contacts|}}
+<div class="contactName">
+  <h1>{{contacts.first_name}} {{contacts.last_name}}</h1>
+  <div class="contactsContent">
+    Phone Number: {{contacts.phone}}<br/>
+    Email Address: {{contacts.email}}<br/>
+    Notes: {{contacts.notes}}<br />
+    <button class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4" id="updateContact" name="{{contacts.id}}">Update</button> <button class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4" id="deleteContact" name="{{contacts.id}}">Delete</button>
+    <br /><br />
+  </div>
+</div>
+{{/each}}
+
+  </a>
+</section>
+
+<!-- New Contact Model Content -->
 <div id="newContactmodal" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
         <div class=' border-black border-2 border-solid bg-zinc-100 '>
             <h2>Add a New Contact</h2>
@@ -50,18 +69,47 @@
 
 </div>
 
-Contacts List
+<!-- Update Model Content -->
 {{#each users.contacts as |contacts|}}
-<div class="blogtitle">
-  <a href="/blogs/{{contacts.id}}"><h2>{{contacts.first_name}} {{contacts.last_name}}</h2></a>
-  <div class="contactsContent">
-    {{contacts.phone}}
-    {{contacts.email}}
-    {{contacts.notes}}
+<div id="updateContactmodal" class="modal">
+    <div class="modal-content">
+        <div class=' border-black border-2 border-solid bg-zinc-100 '>
+            <h2>Update Contact</h2>
+            <form class="form contact-form m-4 border-black border-2 bg-zinc-50 border-solid">
+                <div class="form-group m-2">
+                    <label for="firstName-contact">First Name</label>
+                    <input class="form-input border-2 border-solid border-black" type="text" id="firstName-contact" />
+                </div>
+                <div class="form-group m-2">
+                    <label for="lastName-contact">Last Name</label>
+                    <input class="form-input border-2 border-solid border-black" type="text" id="lastName-contact"
+                      />
+                </div>
+                <div class="form-group m-2">
+                    <label for="phone-contact">Phone Number</label>
+                    <input class="form-input border-2 border-solid border-black" type="text" id="phone-contact"
+                       />
+                </div>
+                <div class="form-group m-2">
+                    <label for="email-contact">Email Address</label>
+                    <input class="form-input border-2 border-solid border-black" type="text" id="email-contact"
+                       />
+                </div>
+                <div class="form-group m-2">
+                    <label for="notes-contact">Notes</label>
+                    <input class="form-input border-2 border-solid border-black" type="text" id="notes-contact"
+                        />
+                </div>
+                <div class="form-group m-2">
+                    <button
+                        class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
+                        id="updateContactBtn" name="{{contacts.id}}" type="submit">Add New Contact</button> <button
+                        class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4 close">Cancel</span>
+                </div>
+            </form>
+        </div>
 
-  </div>
+    </div>
+
 </div>
 {{/each}}
-
-  </a>
-</section>
