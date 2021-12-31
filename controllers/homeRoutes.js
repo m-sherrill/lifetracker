@@ -63,6 +63,12 @@ router.get('/contacts', withAuth, async (req, res) => {
   }
 });
 
+router.get('/calendar', withAuth, async (req, res) => {
+
+    res.render('calendar', { logged_in: req.session.logged_in });
+  
+});
+
 // Login Route
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
