@@ -66,4 +66,19 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const contactData = await Contacts.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    res.status(200).json(contactData);
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
+
+
 module.exports = router;

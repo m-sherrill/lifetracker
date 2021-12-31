@@ -50,6 +50,21 @@ $(".updateContact").on("click", async function () {
 
 })
 
+$('.deleteContact').on("click", async function() {
+    event.preventDefault(),
+    console.log("click")
+    let id = $(this).data("id")
+    const response = await fetch(`/api/contacts/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/contacts');
+      } else {
+        alert('Failed to delete project');
+      }
+})
+
 // New Contact Modal Clicks
 // When the user clicks on the button, open the modal
 $('#newContactOpen').on("click", function () {
