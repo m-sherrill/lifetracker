@@ -3,7 +3,6 @@ const TodoItems = require('./TodoItems')
 const Notes = require('./Notes');
 const NoteItems = require('./NoteItems')
 const Contacts = require('./Contacts')
-const ContactsInfo = require('./ContactsInfo')
 const User = require('./User')
 
 
@@ -78,22 +77,7 @@ Contacts.belongsTo(User, {
   onDelete: 'CASCADE'
 });
 
-User.hasMany(ContactsInfo, {
-  foreignKey: 'user_id'
-})
 
-ContactsInfo.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
-})
 
-Contacts.hasMany(ContactsInfo, {
-  foreignKey: 'contacts_id'
-})
 
-ContactsInfo.belongsTo(Contacts, {
-  foreignKey: 'contacts_id',
-  onDelete: 'CASCADE'
-})
-
-module.exports = { Todo, TodoItems, Notes, NoteItems, Contacts, ContactsInfo, User };
+module.exports = { Todo, TodoItems, Notes, NoteItems, Contacts, User };

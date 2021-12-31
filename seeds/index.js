@@ -1,7 +1,6 @@
 
 const seedUser = require('./user');
 const seedContacts = require('./contacts');
-const seedContactsInfo = require('./contactsInfo');
 const seedNotes = require('./notes');
 const seedNotesItems = require('./notesItems');
 const seedTodo = require('./todo');
@@ -21,8 +20,6 @@ const seedAll = async () => {
   await seedContacts();
   console.log('\n----- CONTACTS SEEDED -----\n');
 
-  await seedContactsInfo();
-  console.log('\n----- CONTACTS INFO SEEDED -----\n');
 
   await seedTodo();
   console.log('\n----- TODO SEEDED -----\n');
