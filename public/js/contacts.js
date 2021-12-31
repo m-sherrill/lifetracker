@@ -79,16 +79,6 @@ $(".close").on("click", function () {
     $('#newContactmodal').css("display", "none")
 })
 
-// When the user clicks anywhere outside of the modal, close it
-$(window).on("click", function (event) {
-    event.preventDefault();
-    
-    const modal = $("#newContactmodal")
-    if (event.target == modal) {
-        $('#newContactmodal').css("display", "none")
-    }
-})
-
 // Update Contact Modal Clicks
 // When the user clicks on the button, open the modal
 
@@ -105,11 +95,3 @@ $(".close").on("click", function () {
     $(`.closeModal`).css("display", "none")
 })
 
-// When the user clicks anywhere outside of the modal, close it
-$(window).on("click", function () {
-    event.preventDefault();
-    const modal = $(`.closeModal`)
-    if (event.target == modal) {
-        $(`.closeModal`).css("display", "none")
-    }
-})
