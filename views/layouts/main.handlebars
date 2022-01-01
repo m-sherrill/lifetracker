@@ -8,8 +8,12 @@
   <link rel="stylesheet" type="text/css" href="">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.10.1/main.min.css,npm/fullcalendar@5.10.1/main.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.10.1,npm/fullcalendar@5.10.1/locales-all.min.js,npm/fullcalendar@5.10.1/locales-all.min.js,npm/fullcalendar@5.10.1/main.min.js"></script>
+
+
 
 
 <body class='bg-blue-100 '>
@@ -42,8 +46,9 @@
 
   <script src="./js/index.js"></script>
   <script src="./js/contacts.js"></script>
-  {{!-- <script src="./js/script.js"></script>
-   <script src="./js/user.js"></script> --}}
+   <script src="./js/user.js"></script>
+    <script src="./js/calendar.js"></script>
+   {{!-- <script src="./js/script.js"></script> --}}
 
   {{#if logged_in}}
   <script src="./js/logout.js"></script>
