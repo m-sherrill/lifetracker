@@ -8,12 +8,12 @@
 
             <div class=" flex flex-col place-content-center">
                 <label for="title">Note Title</label>
-                <input class="self-center border-solid border-2 border-black" id="title" rows="3" />
+                <input class="self-center border-solid border-2 border-black" id="noteTitle" rows="3" />
 
-                <textarea class="form-control self-center my-2 w-1/2" id="addTxt" rows="5">
+                <textarea class="form-control self-center my-2 w-1/2" id="noteBody" rows="5">
                     </textarea>
             </div>
-            <button class="btn btn-primary self-center" id="addBtn" style="background-color:green">
+            <button class="btn btn-primary self-center" id="noteBtn" style="background-color:green">
                 Add Note
             </button>
         </div>
@@ -22,10 +22,10 @@
     <h1 class='text-4xl'>Your Notes</h1>
     <hr>
 
-    <div id="notes" class="row container-fluid flex flex-wrap justify-around">
+    <div id="notes" class="container-fluid flex flex-wrap justify-around">
 
         {{#each notes as |note|}}
-        <span class='p-8 border-2 m-4 border-solid border-black'>
+        <span class='p-8 border-2 m-4 w-1/4 border-solid border-black'>
             <p class='text-center text-2xl'>{{note.title}}</p>
             <p class='text-center'>{{note.content}}</p>
             <button
