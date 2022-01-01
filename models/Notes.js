@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Notes extends Model {}
+class Notes extends Model { }
 
 Notes.init(
   {
@@ -15,7 +15,10 @@ Notes.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-
+    content: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
