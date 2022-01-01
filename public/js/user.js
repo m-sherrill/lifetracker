@@ -50,7 +50,7 @@ $("#loginBtn").on("click", async function () {
 
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("loginModal");
 // Get the button that opens the modal
 var loginBtnOpen = document.getElementById("loginBtnOpen");
 var signUpBtn = document.getElementById("signUpBtn");
@@ -69,3 +69,21 @@ closeBtn.onclick = function () {
     modal.style.display = "none";
 }
 
+var modal2 = document.getElementById("signUpModal");
+// Get the button that opens the modal
+var loginBtnOpen = document.getElementById("signUpBtnOpen");
+var signUpBtn = document.getElementById("signUpBtn");
+var closeBtn2 = document.getElementsByClassName("close2")[0];
+
+// When the user clicks on the button, open the modal
+loginBtnOpen.onclick = function () {
+    event.preventDefault();
+    console.log('click')
+    modal2.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+closeBtn2.onclick = function () {
+    event.preventDefault();
+    modal2.style.display = "none";
+}

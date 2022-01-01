@@ -1,4 +1,4 @@
-<section class="content">
+<section class="content" id="contacts">
 
     <h2>Hello, {{users.first_name}}!</h2>
 
@@ -34,33 +34,33 @@
 <div id="newContactmodal" class="modal">
   <div class="modal-content">
     <div class=' border-black border-2 border-solid bg-zinc-100 '>
-      <h2>Add a New Contact</h2>
-      <form class="form contact-form m-4 border-black border-2 bg-zinc-50 border-solid">
+      <center><h2 class="formTitle">Add a New Contact</h2></center>
+      <form class="form contact-form m-4 border-black border-2 bg-zinc-50 border-solid" id="contact-content"> 
         <div class="form-group m-2">
-          <label for="firstName-contact">First Name</label>
+          <label for="firstName-contact">First Name</label><br/>
           <input class="form-input border-2 border-solid border-black" type="text" id="firstName-contact" />
         </div>
         <div class="form-group m-2">
-          <label for="lastName-contact">Last Name</label>
+          <label for="lastName-contact">Last Name</label><br/>
           <input class="form-input border-2 border-solid border-black" type="text" id="lastName-contact" />
         </div>
         <div class="form-group m-2">
-          <label for="phone-contact">Phone Number</label>
+          <label for="phone-contact">Phone Number</label><br/>
           <input class="form-input border-2 border-solid border-black" type="text" id="phone-contact" />
         </div>
         <div class="form-group m-2">
-          <label for="email-contact">Email Address</label>
+          <label for="email-contact">Email Address</label><br/>
           <input class="form-input border-2 border-solid border-black" type="text" id="email-contact" />
         </div>
         <div class="form-group m-2">
-          <label for="notes-contact">Notes</label>
+          <label for="notes-contact">Notes</label><br/>
           <input class="form-input border-2 border-solid border-black" type="text" id="notes-contact" />
-        </div>
+        </div><br/><br/>
         <div class="form-group m-2">
-          <button
+          <center><button
             class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
-            id="newContactBtn" type="submit">Add New Contact</button> <button
-            class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4 close">Cancel</span>
+            id="newContactBtn" type="submit">Add New Contact</button>&nbsp; &nbsp; &nbsp;<button
+            class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4 close">Cancel</span></center>
         </div>
       </form>
     </div>
