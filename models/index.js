@@ -1,7 +1,7 @@
 const Todo = require('./Todo')
 const TodoItems = require('./TodoItems')
 const Notes = require('./Notes');
-const NoteItems = require('./NoteItems')
+
 const Contacts = require('./Contacts')
 const User = require('./User')
 
@@ -47,23 +47,6 @@ Notes.belongsTo(User, {
   onDelete: 'CASCADE'
 });
 
-User.hasMany(NoteItems, {
-  foreignKey: 'user_id'
-})
-
-NoteItems.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
-})
-
-Notes.hasMany(NoteItems, {
-  foreignKey: 'note_id'
-})
-
-NoteItems.belongsTo(Notes, {
-  foreignKey: 'note_id',
-  onDelete: 'CASCADE'
-})
 
 // Connecting up the contacts
 
@@ -80,4 +63,4 @@ Contacts.belongsTo(User, {
 
 
 
-module.exports = { Todo, TodoItems, Notes, NoteItems, Contacts, User };
+module.exports = { Todo, TodoItems, Notes, Contacts, User };

@@ -1,6 +1,6 @@
 
 const router = require('express').Router();
-const { Notes, User, NoteItems, Todo, TodoItems, Contacts, ContactsInfo } = require('../models')
+const { Notes, User, Todo, TodoItems, Contacts, ContactsInfo } = require('../models')
 const withAuth = require('../utils/auth')
 
 
@@ -26,13 +26,23 @@ router.get('/', async (req, res) => {
 //Notes Page Route
 router.get('/notes', withAuth, async (req, res) => {
   try {
-    const noteData = await Notes.findAll()
-    const notes = noteData.map((note) => note.get({ plain: true }))
-    console.log(notes)
-    res.render('notes', { notes,
-      logged_in: req.session.logged_in, });
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Notes }],
+
+      order: [
+        [Notes, 'id', 'DESC'],
+      ],
+    });
+
+    const users = userData.get({ plain: true });
+    console.log(users)
+
+    res.render('notes', {
+      users,
+      logged_in: true
+    });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -47,7 +57,7 @@ router.get('/contacts', withAuth, async (req, res) => {
       include: [{ model: Contacts }],
 
       order: [
-        [ Contacts, 'first_name', 'ASC' ], 
+        [Contacts, 'first_name', 'ASC'],
       ],
     });
 
@@ -65,8 +75,8 @@ router.get('/contacts', withAuth, async (req, res) => {
 
 router.get('/calendar', withAuth, async (req, res) => {
 
-    res.render('calendar', { logged_in: req.session.logged_in });
-  
+  res.render('calendar', { logged_in: req.session.logged_in });
+
 });
 
 // Login Route
