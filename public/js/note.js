@@ -89,3 +89,19 @@ $("#noteBtn").on("click", async function () {
         }
     }
 })
+
+$('#deleteNote').on("click", async function () {
+    event.preventDefault(),
+        console.log("click")
+    let id = $(this).data("id")
+    console.log(id)
+    const response = await fetch(`/api/notes/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        document.location.replace('/notes');
+    } else {
+        alert('Failed to delete note');
+    }
+})

@@ -29,10 +29,12 @@
             <p class='text-center text-2xl'>{{note.title}}</p>
             <p class='text-center'>{{note.content}}</p>
             <button
-                class='delete btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'>
+                class='btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
+                id='deleteNote' data-id='{{note.id}}'>
                 Delete</button>
             <button
-                class='update btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'>update</button>
+                class='btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
+                id='updateBtn' data-id='{{note.id}}'>update</button>
             <ul class='text-center'>Created at: {{format_date note.createdAt}}</ul>
 
             <ul class='text-center text-xs'>Last Update: {{format_date note.updatedAt}}</ul>
