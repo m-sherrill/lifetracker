@@ -24,7 +24,7 @@
 
     <div id="notes" class="container-fluid flex flex-wrap justify-around">
 
-        {{#each notes as |note|}}
+        {{#each users.notes as |note|}}
         <span class='p-8 border-2 m-4 w-1/4 border-solid border-black'>
             <p class='text-center text-2xl'>{{note.title}}</p>
             <p class='text-center'>{{note.content}}</p>

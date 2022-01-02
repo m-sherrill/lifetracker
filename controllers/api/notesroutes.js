@@ -34,6 +34,7 @@ router.post('/', async (req, res) => {
         const newNote = await Notes.create({
             title: req.body.title,
             content: req.body.content,
+            user_id: req.session.user_id
 
         });
         console.log(newNote)

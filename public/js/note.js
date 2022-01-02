@@ -74,7 +74,7 @@ $("#noteBtn").on("click", async function () {
     const title = $('#noteTitle').val().trim();
     const content = $('#noteBody').val().trim()
 
-    if (title && noteBody) {
+    if (title && content) {
         const response = await fetch('/api/notes', {
             method: 'POST',
             body: JSON.stringify({ title, content }),
@@ -85,7 +85,7 @@ $("#noteBtn").on("click", async function () {
             document.location.replace('/notes');
             console.log("success", response)
         } else {
-            console.log('Failed to create a contact');
+            console.log('note failed');
         }
     }
 })
