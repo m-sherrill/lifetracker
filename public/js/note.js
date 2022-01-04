@@ -90,7 +90,7 @@ $("#noteBtn").on("click", async function () {
     }
 })
 
-$('#deleteNote').on("click", async function () {
+$('.deleteNote').on("click", async function () {
     event.preventDefault(),
         console.log("click")
     let id = $(this).data("id")
@@ -106,13 +106,15 @@ $('#deleteNote').on("click", async function () {
     }
 })
 
-$('#updateBtn').on("click", function () {
+$('.updateBtn').on("click", function () {
     let id = $(this).data("id")
     event.preventDefault();
     console.log('click')
     $(`#updateNoteModal${id}`).css("display", "block")
 })
-$("#updateNoteBtn").on("click", async function () {
+
+
+$(".updateNoteBtn").on("click", async function () {
     let id = $(this).data("id")
     console.log(id)
     const title = $('#noteTitleUpdate').val()

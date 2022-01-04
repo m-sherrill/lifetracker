@@ -1,30 +1,45 @@
-
-
+<span class='flex justify-between mb-16 border-4 border-solid border-black'>
+  <a class='hover:text-red-400' href='/notes'>
+    Notes
+  </a>
+  <a class='hover:text-red-400' href="/calendar">
+    <div>Calendar</div>
+  </a>
+  <a class='hover:text-red-400' href="/contacts">
+    <div>Contacts</div>
+  </a>
+  <a class='' href="https://google.com">
+    <div>To DOs!</div>
+  </a>
+</span>
 
 <div id="newEventmodal">
   <div class="calendar-addevent">
     <div class=' border-black border-2 border-solid bg-zinc-100 '>
-      <center><h2 class="formTitle">Add a New Event</h2></center>
-      <form class="form  calendarContent m-4 border-black border-2 bg-zinc-50 border-solid" id="calendarContent"> 
+      <center>
+        <h2 class="formTitle">Add a New Event</h2>
+      </center>
+      <form class="form  calendarContent m-4 border-black border-2 bg-zinc-50 border-solid" id="calendarContent">
         <div class="form-group m-2">
-          <label for="title-event">Title</label><br/>
+          <label for="title-event">Title</label><br />
           <input class="form-input border-2 border-solid border-black" type="text" id="title-event" />
         </div>
         <div class="form-group m-2">
-          <label for="start-event">Starting Date and Time</label><br/>
-          <input class="form-input border-2 border-solid border-black" type="datetime-local" id="start-event" name="start-event" 
-       min="2022-01-01T00:00" max="2025-12-31T00:00"/><br/><br/>
-       <label for="end-event">Ending Date and Time</label><br/>
-          <input class="form-input border-2 border-solid border-black" type="datetime-local" id="end-event" name="end-event" 
-       min="2022-01-01T00:00" max="2025-12-31T00:00"/>
+          <label for="start-event">Starting Date and Time</label><br />
+          <input class="form-input border-2 border-solid border-black" type="datetime-local" id="start-event"
+            name="start-event" min="2022-01-01T00:00" max="2025-12-31T00:00" /><br /><br />
+          <label for="end-event">Ending Date and Time</label><br />
+          <input class="form-input border-2 border-solid border-black" type="datetime-local" id="end-event"
+            name="end-event" min="2022-01-01T00:00" max="2025-12-31T00:00" />
         </div>
-        
-        
+
+
         <div class="form-group m-2">
           <center><button
-            class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
-            id="newEventBtn" type="submit">Add New Event</button>&nbsp; &nbsp; &nbsp;<button
-            class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4 close">Cancel</span></center>
+              class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
+              id="newEventBtn" type="submit">Add New Event</button>&nbsp; &nbsp; &nbsp;<button
+              class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4 close">Cancel</span>
+          </center>
         </div>
       </form>
     </div>
@@ -34,6 +49,4 @@
 </div>
 
 
-   <div id="calendar"></div>
-
-
+<div id="calendar"></div>
