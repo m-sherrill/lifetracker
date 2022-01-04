@@ -22,7 +22,13 @@
     width: 400px;
   }
   
-
+.calendar-addevent {
+  background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
   
   .close:hover,
   .close:focus {
@@ -78,4 +84,12 @@
 
  .btn {
    font-weight: bold;
+ }
+
+ .calendarContent {
+   display: flex;
+   align-content: center;
+   align-items: center;
+   justify-content: space-around;
+   flex-wrap: wrap;
  }

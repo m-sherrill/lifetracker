@@ -1,7 +1,7 @@
 const Todo = require('./Todo')
 const TodoItems = require('./TodoItems')
 const Notes = require('./Notes');
-
+const Calendar = require('./Calendar')
 const Contacts = require('./Contacts')
 const User = require('./User')
 
@@ -60,7 +60,17 @@ Contacts.belongsTo(User, {
   onDelete: 'CASCADE'
 });
 
+// connection for calendar
+User.hasMany(Calendar, {
+  foreignKey: 'user_id',
+
+});
+
+Calendar.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
 
 
-module.exports = { Todo, TodoItems, Notes, Contacts, User };
+module.exports = { Todo, TodoItems, Notes, Contacts, User, Calendar };

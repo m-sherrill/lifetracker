@@ -4,6 +4,7 @@ const seedContacts = require('./contacts');
 const seedNotes = require('./notes');
 const seedTodo = require('./todo');
 const seedTodoItems = require('./todoltems');
+const seedCalendar = require('./calendar')
 
 
 const sequelize = require('../config/connection');
@@ -29,8 +30,8 @@ const seedAll = async () => {
   await seedNotes();
   console.log('\n----- NOTES SEEDED -----\n');
 
-  await seedNotesItems();
-  console.log('\n----- NOTES ITEMS SEEDED -----\n');
+  await seedCalendar();
+  console.log('\n----- Calendar SEEDED -----\n');
 
   process.exit(0);
 };
