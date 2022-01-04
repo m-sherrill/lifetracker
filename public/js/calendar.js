@@ -6,18 +6,56 @@ document.addEventListener('DOMContentLoaded', function() {
       height: "auto",
       selectable: true,
       editable: true,
-      events: [
-        { // this object will be "parsed" into an Event Object
-          title: 'Sample Event 1', // a property!
-          start: '2021-12-20', // a property!
-          end: '2021-12-20' // a property! ** see important note below about 'end' **
-        },
-        { // this object will be "parsed" into an Event Object
-            title: 'Sample Event 2', // a property!
-            start: '2021-12-25', // a property!
-            end: '2021-12-28' // a property! ** see important note below about 'end' **
-          }
-      ]
+      eventSources: [
+        {
+          url: '../api/calendar', // use the `url` property
+          color: 'yellow',    // an option!
+          textColor: 'black'  // an option!
+        }
+      ],
+ 
+      
     });
+  
     calendar.render();
-  });
+
+      })
+  
+
+      $('#newEventOpen').on("click", function () {
+        event.preventDefault();
+        console.log('click')
+        $('#newEventmodal').css("display", "block")
+    })
+    
+    // When the user clicks on <span> (x), close the modal
+    $(".close").on("click", function () {
+        event.preventDefault();
+        $('#newEventmodal').css("display", "none")
+    })
+
+    $('#newEventBtn').on("click", async function () {
+      console.log("in the new event!!")
+      event.preventDefault();
+
+      const title = $('#title-event').val().trim();
+      const start = $('#start-event').val().trim()
+      const end = $('#end-event').val().trim()
+      
+      console.log(title, start, end)
+      
+      if (title && start && end) {
+          const response = await fetch('/api/calendar', {
+              method: 'POST',
+              body: JSON.stringify({ title, start, end }),
+              headers: { 'Content-Type': 'application/json' },
+          });
+          console.log(response)
+          if (response.ok) {
+              document.location.replace('/calendar');
+              console.log("success", response)
+          } else {
+              console.log('Failed to create a contact');
+          }
+      }
+  })
