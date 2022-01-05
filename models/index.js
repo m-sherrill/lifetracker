@@ -1,9 +1,9 @@
-const Todo = require('./Todo')
-const TodoItems = require('./TodoItems')
-const Notes = require('./Notes');
-const Calendar = require('./Calendar')
-const Contacts = require('./Contacts')
-const User = require('./User')
+const Todo = require('./Todo.js')
+const TodoItems = require('./TodoItems.js')
+const Notes = require('./Notes.js');
+const Calendar = require('./Calendar.js')
+const Contacts = require('./Contacts.js')
+const User = require('./User.js')
 
 
 // Todo list connection points
