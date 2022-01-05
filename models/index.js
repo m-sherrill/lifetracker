@@ -1,5 +1,5 @@
-const Todo = require('./Todo.js')
-const TodoItems = require('./TodoItems.js')
+const Todo = require('./todo.js')
+const TodoItems = require('./todoItems.js')
 const Notes = require('./Notes.js');
 const Calendar = require('./Calendar.js')
 const Contacts = require('./Contacts.js')
