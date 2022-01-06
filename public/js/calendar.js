@@ -2,8 +2,16 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
-  var calendar = new FullCalendar.Calendar(calendarEl, { 
-    initialView: 'dayGridMonth',
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: "dayGridMonth",
+    weekends: true,
+    navLinks: true,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+    },
+    themeSystem: 'standard',
     windowResize: function (arg) { },
     height: "auto",
     selectable: true,
@@ -12,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     eventSources: [
       {
         url: '../api/calendar', // use the `url` property
+
       }
     ],
     eventDrop: function (arg) {
@@ -42,13 +51,13 @@ document.addEventListener('DOMContentLoaded', function () {
             dataType: 'json',
             data: { id: id },
           });
-          
+
         }
         location.reload()
       })
-      
 
-    
+
+
 
     },
   })
