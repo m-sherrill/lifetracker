@@ -10,6 +10,7 @@ router.get('/', withAuth, async (req, res) => {
       include: [{ model: Calendar }],
     });
     console.log(calendarData.calendars)
+    
     res.status(200).json(calendarData.calendars);
   } catch (err) {
     console.log(err)
@@ -60,6 +61,7 @@ router.put('/:id', async (req, res) => {
         },
       }
     )
+    req.flash('info', 'Flash Message Added')
     res.json(calendarData);
   }
   catch (err) {

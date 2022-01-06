@@ -9,22 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
     selectable: true,
     editable: true,
     droppable: true,
-    // eventDidMount: function(info) {
-    //   var tooltip = new Tooltip(info.el, {
-    //     title: info.el.title,
-    //     placement: 'top',
-    //     trigger: 'hover',
-    //     container: 'body'
-    //   });
-    // },
-
     eventSources: [
       {
         url: '../api/calendar', // use the `url` property
       }
     ],
-   
-
     eventDrop: function (arg) {
       var start = moment(arg.event.start).local().format()
       var end = moment(arg.event.end).local().format()
@@ -38,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     eventClick: function (arg) {
       var id = arg.event.id;
       var confirm = Swal.fire({
-        title: 'Are you sure?',
+        title: 'Are you sure you would like to delete this event?',
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
@@ -47,19 +36,15 @@ document.addEventListener('DOMContentLoaded', function () {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
           $.ajax({
             url: `./api/calendar/${arg.event.id}`,
             type: "DELETE",
             dataType: 'json',
             data: { id: id },
           });
-          location.reload()
+          
         }
+        location.reload()
       })
       
 
@@ -70,12 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
   calendar.render();
 });
 
-
-$('#newEventOpen').on("click", function () {
-  event.preventDefault();
-  console.log('click')
-  $('#newEventmodal').css("display", "block")
-})
 
 
 $('#newEventBtn').on("click", async function () {
@@ -97,7 +76,6 @@ $('#newEventBtn').on("click", async function () {
     console.log(response)
     if (response.ok) {
       document.location.replace('/calendar');
-      console.log("success", response)
     } else {
       console.log('Failed to create a contact');
     }
