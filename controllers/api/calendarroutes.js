@@ -61,7 +61,6 @@ router.put('/:id', async (req, res) => {
         },
       }
     )
-    req.flash('info', 'Flash Message Added')
     res.json(calendarData);
   }
   catch (err) {

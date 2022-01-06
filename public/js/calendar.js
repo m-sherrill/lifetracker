@@ -9,11 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      right: 'dayGridMonth,listMonth'
     },
     themeSystem: 'standard',
     windowResize: function (arg) { },
-    height: "auto",
     selectable: true,
     editable: true,
     droppable: true,
