@@ -93,3 +93,14 @@
    justify-content: space-around;
    flex-wrap: wrap;
  }
+
+ #calendar {
+background-color: white;
+border-color: grey;
+border: solid 2px;
+padding: 10px;
+ }
+
+ .fc-today-bg-color {
+  background-color: lightblue;
+}
