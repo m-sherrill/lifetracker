@@ -1,26 +1,48 @@
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
+     
       initialView: 'dayGridMonth',
       windowResize:  function(arg) {},
       height: "auto",
       selectable: true,
-      editable: true,
+      editable:true,
+      droppable: true,
+      slotEventOverlap: true,
       eventSources: [
         {
           url: '../api/calendar', // use the `url` property
-          color: 'yellow',    // an option!
-          textColor: 'black'  // an option!
         }
       ],
- 
-      
+     
+      eventDrop: function(arg) {
+        var start = moment(arg.event.start).local().format()
+        var end = moment(arg.event.end).local().format()
+    
+        $.ajax({
+          url:`./api/calendar/${arg.event.id}`,
+          type:"PUT",
+          data:{id:arg.event.id, start:start, end:end},
+        });
+    },
+    eventClick: function(arg) {
+      var id = arg.event.id;
+  
+      $.ajax({
+        url:`./api/calendar/${arg.event.id}`,
+        type:"DELETE",
+        dataType: 'json',
+        data:{id:id},
+      });
+    
+     }, 
+    })  
+     calendar.render();
     });
-  
-    calendar.render();
-
-      })
-  
+ 
 
       $('#newEventOpen').on("click", function () {
         event.preventDefault();

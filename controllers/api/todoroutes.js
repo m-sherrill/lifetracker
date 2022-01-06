@@ -1,67 +1,67 @@
-// const router = require('express').Router();
-// const { Todo } = require('../../models');
+const router = require('express').Router();
+const { Todo } = require('../../models');
 
-// router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
 
-//     try {
-//         const todoData = await Todo.findAll(
-//             {
-//                 include: [
-//                     { model: User }, { model: TodoItems }
-//                 ],
-//             });
-//         res.status(200).json(todoData);
-//     } catch (err) {
-//         console.log(err)
-//         res.status(500).json(err);
-//     }
-// });
+    try {
+        const todoData = await Todo.findAll(
+            {
+                include: [
+                    { model: User }, { model: TodoItems }
+                ],
+            });
+        res.status(200).json(todoData);
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err);
+    }
+});
 
-// router.post('/', async (req, res) => {
-//     try {
-//         const todoData = await Todo.create({
-//             title: req.body.title,
-//             user_id: req.body.user_id,
-//         });
-//      res.status(200).json(todoData);
-//     } catch (err){
-//     res.status(400).json(err);
-// }
-// });
+router.post('/', async (req, res) => {
+    try {
+        const todoData = await Todo.create({
+            title: req.body.title,
+            user_id: req.body.user_id,
+        });
+     res.status(200).json(todoData);
+    } catch (err){
+    res.status(400).json(err);
+}
+});
 
-// router.put('/:id', async (req, res) => {
-//     try {
-//         const todoData = await Todo.update({
-//             title: req.body.title,
-//             user_id: req.body.user_id,
+router.put('/:id', async (req, res) => {
+    try {
+        const todoData = await Todo.update({
+            title: req.body.title,
+            user_id: req.body.user_id,
 
-//         },
-//             {
-//                 where: {
-//                     id: req.params.id,
-//                 }
-//             });
-//         res.status(200).json(todoData);
-//     } catch (err) {
-//         res.status(400).json(err);
-//     }
-// });
+        },
+            {
+                where: {
+                    id: req.params.id,
+                }
+            });
+        res.status(200).json(todoData);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 
-// router.delete('/delete/:id', async (req, res) => {
-//     try {
-//         const tododata = await Todo.destroy({
-//             where: {
-//                 id: req.params.id,
-//             }
-//         });
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        const tododata = await Todo.destroy({
+            where: {
+                id: req.params.id,
+            }
+        });
 
-//         res.status(200).json(tododata)
+        res.status(200).json(tododata)
 
-//     } catch (err) {
-//         res.status(400).json(err);
-//     }
-// });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 
 
