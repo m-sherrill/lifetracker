@@ -1,14 +1,19 @@
 const router = require('express').Router();
-const { Todo } = require('../../models');
+const { Todo, TodoItems } = require('../../models');
 
 router.get('/', async (req, res) => {
 
     try {
         const todoData = await Todo.findAll(
             {
+               
                 include: [
-                    { model: User }, { model: TodoItems }
+                    {
+                        model: TodoItems,
+                    },
                 ],
+          
+                    
             });
         res.status(200).json(todoData);
     } catch (err) {
@@ -17,10 +22,23 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    
+    try {
+      console.log(req.params.id)
+      const todoData = await Todo.findByPk(req.params.id);
+      res.status(200).json(todoData);
+    } catch (err) {
+      console.log(err)
+      res.status(500).json(err);
+    }
+  })
+  
+
 router.post('/', async (req, res) => {
     try {
         const todoData = await Todo.create({
-            title: req.body.title,
+            name: req.body.name,
             user_id: req.body.user_id,
         });
      res.status(200).json(todoData);
@@ -32,7 +50,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const todoData = await Todo.update({
-            title: req.body.title,
+            name: req.body.name,
             user_id: req.body.user_id,
 
         },
@@ -48,16 +66,18 @@ router.put('/:id', async (req, res) => {
 });
 
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        const tododata = await Todo.destroy({
+        const todoData = await Todo.destroy({
             where: {
                 id: req.params.id,
             }
         });
-
-        res.status(200).json(tododata)
-
+        if(!todoData){
+            res.status(404).json({message: 'No todo with this id !!'});
+            return;
+          }
+          res.status(200).json(todoData)
     } catch (err) {
         res.status(400).json(err);
     }
@@ -69,4 +89,4 @@ router.delete('/delete/:id', async (req, res) => {
 
 
 
-// module.exports = router;
+module.exports = router;
