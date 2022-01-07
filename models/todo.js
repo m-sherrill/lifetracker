@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class todo extends Model {}
+class Todo extends Model {}
 
-todo.init(
+Todo.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -32,4 +32,4 @@ todo.init(
   }
 );
 
-module.exports = todo;
+module.exports = Todo;

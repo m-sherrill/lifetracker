@@ -1,13 +1,17 @@
 const router = require('express').Router();
-const { Calendar } = require('../../models');
+const { Calendar, User} = require('../../models');
+const withAuth = require('../../utils/auth')
 
-// Get all Contacts
-router.get('/', async (req, res) => {
+// Get all Calendar Items
+router.get('/', withAuth, async (req, res) => {
   try {
-    const calendarData = await Calendar.findAll(
-    );
-    console.log(calendarData)
-    res.status(200).json(calendarData);
+    const calendarData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Calendar }],
+    });
+    console.log(calendarData.calendars)
+    
+    res.status(200).json(calendarData.calendars);
   } catch (err) {
     console.log(err)
     res.status(500).json(err);
@@ -57,7 +61,7 @@ router.put('/:id', async (req, res) => {
         },
       }
     )
-    res.json(contactData);
+    res.json(calendarData);
   }
   catch (err) {
     console.log(err)
