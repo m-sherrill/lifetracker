@@ -22,7 +22,13 @@
     width: 400px;
   }
   
-
+.calendar-addevent {
+  background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
   
   .close:hover,
   .close:focus {
@@ -31,8 +37,70 @@
     cursor: pointer;
   }
 
+ #login-content,
+ #contact-content,
  #login-content {
      padding: 10px;
-     text-align-last: justify;
-     text-justify: distribute-all-lines;
  }
+
+ #loginContainer {
+   display: flex;
+   justify-content: center;
+   align-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   text-align: center;
+ }
+
+ .loginCard {
+   width: 250px;
+   align-self: center;
+   padding: 50px;
+   margin: 50px;
+   text-align: center;
+ }
+
+ #calendar {
+   margin: 25px;
+ }
+
+ #contacts {
+   margin: 25px;
+ }
+
+ label {
+   font-weight: bold;
+ }
+
+ .formTitle {
+   padding: 5px;
+   font-size: 25px;
+   font-weight: bold;
+ }
+
+ input {
+   width: 280px;
+ }
+
+ .btn {
+   font-weight: bold;
+ }
+
+ .calendarContent {
+   display: flex;
+   align-content: center;
+   align-items: center;
+   justify-content: space-around;
+   flex-wrap: wrap;
+ }
+
+ #calendar {
+background-color: white;
+border-color: grey;
+border: solid 2px;
+padding: 10px;
+ }
+
+ .fc-today-bg-color {
+  background-color: lightblue;
+}

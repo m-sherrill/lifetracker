@@ -7,10 +7,22 @@
   <title>Work Life Tracker</title>
   <link rel="stylesheet" type="text/css" href="">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.10.1/main.min.css,npm/fullcalendar@5.10.1/main.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
- 
+  <script src='https://cdn.jsdelivr.net/npm/moment@2.27.0/min/moment.min.js'></script>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@5.10.1/main.global.min.js"></script>
+<script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+
+   
+
+
+
 
 <body class='bg-blue-100 '>
   <div class='flex flex-col'>
@@ -20,7 +32,8 @@
           href="/">Home</a>
 
         {{#if logged_in}}
-        <a class='px-2 bg-blue-300 hover:bg-blue-500 border-4 border-double border-black hover:border-solid hover:border-4' href="/login" id="logout">Logout</a>
+        <a class='px-2 bg-blue-300 hover:bg-blue-500 border-4 border-double border-black hover:border-solid hover:border-4'
+          href="/login" id="logout">Logout</a>
         {{else}}
         <a class='px-2 bg-blue-300 hover:bg-blue-500 border-4 border-double border-black hover:border-solid hover:border-4'
           href="/login">Login</a>
@@ -37,10 +50,14 @@
       {{{body}}}
     </div>
   </main>
-  
+
 
   <script src="./js/index.js"></script>
   <script src="./js/contacts.js"></script>
+  <script src="./js/user.js"></script>
+  <script src="./js/calendar.js"></script>
+  <script src="./js/note.js"></script>
+
 
   {{#if logged_in}}
   <script src="./js/logout.js"></script>

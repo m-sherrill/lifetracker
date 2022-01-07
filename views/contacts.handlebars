@@ -1,34 +1,53 @@
-<section class=content>
-  <a href="/contacts">
-    <header>Contacts</header>
+<span class='flex justify-around mb-16 border-4 border-solid border-black'>
+  <a class='hover:text-red-400' href='/notes'>
+    Notes
+  </a>
+  <a class='hover:text-red-400' href="/calendar">
+    <div>Calendar</div>
+  </a>
+  <a class='hover:text-red-400' href="/contacts">
+    <div>Contacts</div>
+  </a>
+  <a class='' href="https://google.com">
+    <div>To DOs!</div>
+  </a>
+</span>
 
-    <h2>Hello, {{users.first_name}}!</h2>
+<p class='text-center text-6xl mb-16'>Contacts</p>
+
+<section class="content self-center" id="contacts">
+
+  <h2 class='text-center text-2xl'>Hello, {{users.first_name}}!</h2>
 
 
-    <!-- The newContact Modal Trigger-->
+  <!-- The newContact Modal Trigger-->
+  <span class='flex w-full place-content-center mt-8'>
     <button
       class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
       id="newContactOpen">Add a New Contact</button>
-    <br /><br />
-    Contacts List
-    <br /><br />
+  </span>
+  <br /><br />
+  <p class='text-center text-4xl'> Contacts List</p>
+  <br /><br /><span class='flex flex-wrap'>
     {{#each users.contacts as |contacts|}}
-    <div class="contactName">
-      <h1>{{contacts.first_name}} {{contacts.last_name}}</h1>
+
+    <div class="contactName text-center w-1/5 border-solid border-2 border-black p-2 m-8 bg-zinc-100">
+      <h1 class='mt-4'>{{contacts.first_name}} {{contacts.last_name}}</h1>
       <div class="contactsContent">
         Phone Number: {{contacts.phone}}<br />
         Email Address: {{contacts.email}}<br />
         Notes: {{contacts.notes}}<br />
-        <button
-          class="updateContactOpen btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
-          data-id="{{contacts.id}}">Update</button> <button
-          class="deleteContact btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
-          data-id="{{contacts.id}}">Delete</button>
-        <br /><br />
+        <span class='flex place-content-center justify-around mt-8 mb-0'>
+          <button
+            class="updateContactOpen btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
+            data-id="{{contacts.id}}">Update</button> <button
+            class="deleteContact btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
+            data-id="{{contacts.id}}">Delete</button>
+        </span><br /><br />
       </div>
     </div>
     {{/each}}
-
+  </span>
   </a>
 </section>
 
@@ -36,33 +55,36 @@
 <div id="newContactmodal" class="modal">
   <div class="modal-content">
     <div class=' border-black border-2 border-solid bg-zinc-100 '>
-      <h2>Add a New Contact</h2>
-      <form class="form contact-form m-4 border-black border-2 bg-zinc-50 border-solid">
+      <center>
+        <h2 class="formTitle">Add a New Contact</h2>
+      </center>
+      <form class="form contact-form m-4 border-black border-2 bg-zinc-50 border-solid" id="contact-content">
         <div class="form-group m-2">
-          <label for="firstName-contact">First Name</label>
+          <label for="firstName-contact">First Name</label><br />
           <input class="form-input border-2 border-solid border-black" type="text" id="firstName-contact" />
         </div>
         <div class="form-group m-2">
-          <label for="lastName-contact">Last Name</label>
+          <label for="lastName-contact">Last Name</label><br />
           <input class="form-input border-2 border-solid border-black" type="text" id="lastName-contact" />
         </div>
         <div class="form-group m-2">
-          <label for="phone-contact">Phone Number</label>
+          <label for="phone-contact">Phone Number</label><br />
           <input class="form-input border-2 border-solid border-black" type="text" id="phone-contact" />
         </div>
         <div class="form-group m-2">
-          <label for="email-contact">Email Address</label>
+          <label for="email-contact">Email Address</label><br />
           <input class="form-input border-2 border-solid border-black" type="text" id="email-contact" />
         </div>
         <div class="form-group m-2">
-          <label for="notes-contact">Notes</label>
+          <label for="notes-contact">Notes</label><br />
           <input class="form-input border-2 border-solid border-black" type="text" id="notes-contact" />
-        </div>
+        </div><br /><br />
         <div class="form-group m-2">
-          <button
-            class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
-            id="newContactBtn" type="submit">Add New Contact</button> <button
-            class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4 close">Cancel</span>
+          <center><button
+              class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
+              id="newContactBtn" type="submit">Add New Contact</button>&nbsp; &nbsp; &nbsp;<button
+              class="btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4 close">Cancel</span>
+          </center>
         </div>
       </form>
     </div>
@@ -80,23 +102,23 @@
       <form class="form update-contact-form m-4 border-black border-2 bg-zinc-50 border-solid" id="update-contact-form">
         <div class="form-group m-2">
           <label for="firstName-Ucontact">First Name</label>
-          <input class="form-input border-2 border-solid border-black" type="text" id="firstName-Ucontact"/>
+          <input class="form-input border-2 border-solid border-black" type="text" id="firstName-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="lastName-Ucontact">Last Name</label>
-          <input class="form-input border-2 border-solid border-black" type="text" id="lastName-Ucontact"/>
+          <input class="form-input border-2 border-solid border-black" type="text" id="lastName-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="phone-Ucontact">Phone Number</label>
-          <input class="form-input border-2 border-solid border-black" type="text" id="phone-Ucontact"/>
+          <input class="form-input border-2 border-solid border-black" type="text" id="phone-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="email-Ucontact">Email Address</label>
-          <input class="form-input border-2 border-solid border-black" type="email" id="email-Ucontact"/>
+          <input class="form-input border-2 border-solid border-black" type="email" id="email-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="notes-Ucontact">Notes</label>
-          <input class="form-input border-2 border-solid border-black" type="text" id="notes-Ucontact"/>
+          <input class="form-input border-2 border-solid border-black" type="text" id="notes-Ucontact" />
         </div>
         <div class="form-group m-2">
           <button

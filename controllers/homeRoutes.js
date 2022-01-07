@@ -1,6 +1,6 @@
 
 const router = require('express').Router();
-const { Notes, User, NoteItems, Todo, TodoItems, Contacts, ContactsInfo } = require('../models')
+const { Notes, User, Todo, TodoItems, Contacts, Calendar } = require('../models')
 const withAuth = require('../utils/auth')
 
 
@@ -26,13 +26,23 @@ router.get('/', async (req, res) => {
 //Notes Page Route
 router.get('/notes', withAuth, async (req, res) => {
   try {
-    const noteData = await Notes.findAll()
-    const notes = noteData.map((note) => note.get({ plain: true }))
-    console.log(notes)
-    res.render('notes', { notes,
-      logged_in: req.session.logged_in, });
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Notes }],
+
+      order: [
+        [Notes, 'id', 'DESC'],
+      ],
+    });
+
+    const users = userData.get({ plain: true });
+    console.log(users)
+
+    res.render('notes', {
+      users,
+      logged_in: true
+    });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -47,7 +57,7 @@ router.get('/contacts', withAuth, async (req, res) => {
       include: [{ model: Contacts }],
 
       order: [
-        [ Contacts, 'first_name', 'ASC' ], 
+        [Contacts, 'first_name', 'ASC'],
       ],
     });
 
@@ -62,6 +72,53 @@ router.get('/contacts', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// calendar home route
+router.get('/calendar', withAuth, async (req, res) => {
+  try {
+    console.log("in calendar route!!!")
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Calendar }],
+    });
+
+    const users = userData.get({ plain: true });
+    console.log(users)
+
+    res.render('calendar', {
+      users,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// todo route
+router.get('/todos', withAuth, async (req, res) => { // the path to the /todos page with authorization
+  try {
+    const userData = await User.findByPk(req.session.user_id, { // we search for the users model verses the todo/todo items model because we want the user to only see what they have done -- and not see what others have added. 
+      attributes: { exclude: ['password'] }, // exclude password so the password information is not included in the returned object
+      include: [{ model: Todo, TodoItems }], // include the todo and todo items information connected to the logged in user
+
+      order: [
+        [Todo, 'id', 'DESC'], // this I let for desc order based on the id, newest todo lists will populate to the top
+      ],
+    });
+
+    const users = userData.get({ plain: true }); // returns the information you searched for in a json friendly environment
+    console.log(users)
+
+    res.render('todo', { // renders this information to the todo handlebars file
+      users, // the whole object that you just looked for -- we can then take information from this object and render it to the page
+      logged_in: true // the user has to be logged in to view this page or the items
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 // Login Route
 router.get('/login', (req, res) => {

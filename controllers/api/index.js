@@ -1,13 +1,14 @@
 const router = require('express').Router();
+const noteRoutes = require('./notesroutes');
+const contactsRoutes = require('./contactsroutes');
+const todoRoutes = require('./todoRoutes');
+const userRoutes = require('./userroutes')
+const calendarRoutes = require('./calendarroutes')
 
-// const noteRoutes = require('./noteRoutes');
-const contactsRoutes = require('./contactsRoutes');
-// const todoRoutes = require('./todoRoutes');
-const userRoutes = require('./userRoutes')
-
-// router.use('/noteRoutes', noteRoutes);
+router.use('/notes', noteRoutes);
 router.use('/contacts', contactsRoutes);
-// router.use('/todos', todoRoutes);
+router.use('/todos', todoRoutes);
 router.use('/users', userRoutes);
+router.use('/calendar', calendarRoutes);
 
 module.exports = router;

@@ -1,9 +1,9 @@
-const Todo = require('./Todo')
-const TodoItems = require('./TodoItems')
-const Notes = require('./Notes');
-const NoteItems = require('./NoteItems')
-const Contacts = require('./Contacts')
-const User = require('./User')
+const Todo = require('./todo.js')
+const TodoItems = require('./todoItems.js')
+const Notes = require('./Notes.js');
+const Calendar = require('./Calendar.js')
+const Contacts = require('./Contacts.js')
+const User = require('./User.js')
 
 
 // Todo list connection points
@@ -47,23 +47,6 @@ Notes.belongsTo(User, {
   onDelete: 'CASCADE'
 });
 
-User.hasMany(NoteItems, {
-  foreignKey: 'user_id'
-})
-
-NoteItems.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
-})
-
-Notes.hasMany(NoteItems, {
-  foreignKey: 'note_id'
-})
-
-NoteItems.belongsTo(Notes, {
-  foreignKey: 'note_id',
-  onDelete: 'CASCADE'
-})
 
 // Connecting up the contacts
 
@@ -77,7 +60,17 @@ Contacts.belongsTo(User, {
   onDelete: 'CASCADE'
 });
 
+// connection for calendar
+User.hasMany(Calendar, {
+  foreignKey: 'user_id',
+
+});
+
+Calendar.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
 
 
-module.exports = { Todo, TodoItems, Notes, NoteItems, Contacts, User };
+module.exports = { Todo, TodoItems, Notes, Contacts, User, Calendar };
