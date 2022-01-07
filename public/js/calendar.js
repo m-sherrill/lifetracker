@@ -1,61 +1,91 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      windowResize:  function(arg) {},
-      height: "auto",
-      selectable: true,
-      editable: true,
-      eventSources: [
-        {
-          url: '../api/calendar', // use the `url` property
-          color: 'yellow',    // an option!
-          textColor: 'black'  // an option!
-        }
-      ],
- 
-      
-    });
-  
-    calendar.render();
 
-      })
-  
 
-      $('#newEventOpen').on("click", function () {
-        event.preventDefault();
-        console.log('click')
-        $('#newEventmodal').css("display", "block")
-    })
-    
-    // When the user clicks on <span> (x), close the modal
-    $(".close").on("click", function () {
-        event.preventDefault();
-        $('#newEventmodal').css("display", "none")
-    })
+document.addEventListener('DOMContentLoaded', function () {
+  var calendarEl = document.getElementById('calendar');
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: "dayGridMonth",
+    weekends: true,
+    navLinks: true,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,listMonth'
+    },
+    themeSystem: 'standard',
+    windowResize: function (arg) { },
+    selectable: true,
+    editable: true,
+    droppable: true,
+    eventSources: [
+      {
+        url: '../api/calendar', // use the `url` property
 
-    $('#newEventBtn').on("click", async function () {
-      console.log("in the new event!!")
-      event.preventDefault();
-
-      const title = $('#title-event').val().trim();
-      const start = $('#start-event').val().trim()
-      const end = $('#end-event').val().trim()
-      
-      console.log(title, start, end)
-      
-      if (title && start && end) {
-          const response = await fetch('/api/calendar', {
-              method: 'POST',
-              body: JSON.stringify({ title, start, end }),
-              headers: { 'Content-Type': 'application/json' },
-          });
-          console.log(response)
-          if (response.ok) {
-              document.location.replace('/calendar');
-              console.log("success", response)
-          } else {
-              console.log('Failed to create a contact');
-          }
       }
+    ],
+    eventDrop: function (arg) {
+      var start = moment(arg.event.start).local().format()
+      var end = moment(arg.event.end).local().format()
+
+      $.ajax({
+        url: `./api/calendar/${arg.event.id}`,
+        type: "PUT",
+        data: { id: arg.event.id, start: start, end: end },
+      });
+    },
+    eventClick: function (arg) {
+      var id = arg.event.id;
+      var confirm = Swal.fire({
+        title: 'Are you sure you would like to delete this event?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `./api/calendar/${arg.event.id}`,
+            type: "DELETE",
+            dataType: 'json',
+            data: { id: id },
+          });
+
+        }
+        location.reload()
+      })
+
+
+
+
+    },
   })
+  calendar.render();
+});
+
+
+
+$('#newEventBtn').on("click", async function () {
+  console.log("in the new event!!")
+  event.preventDefault();
+
+  const title = $('#title-event').val().trim();
+  const start = $('#start-event').val().trim()
+  const end = $('#end-event').val().trim()
+
+  console.log(title, start, end)
+
+  if (title && start && end) {
+    const response = await fetch('/api/calendar', {
+      method: 'POST',
+      body: JSON.stringify({ title, start, end }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    console.log(response)
+    if (response.ok) {
+      document.location.replace('/calendar');
+    } else {
+      console.log('Failed to create a contact');
+    }
+  }
+})
