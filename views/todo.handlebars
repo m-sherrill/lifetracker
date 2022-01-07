@@ -6,17 +6,15 @@
 
 <div id="myDIV" class="header">
   <h2>My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
+  <input type="text" id="todoTitle" placeholder="Title...">
+  <button id="todoBtn" class="addBtn">Add</button>
 </div>
 
 <ul id="myList">
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-</ul>
 
-<script src="Project-2\public\js\toDo.js"></script>
+</ul>
+{{#each todos}}
+<li>{{name}}</li>
+  {{/each}}
+
+<script src="/js/toDo.js"></script>

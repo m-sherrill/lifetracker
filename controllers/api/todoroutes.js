@@ -37,12 +37,13 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
+        console.log('REQ.body!!!', req.body)
         const todoData = await Todo.create({
-            name: req.body.name,
-            user_id: req.body.user_id,
+            name: req.body.title,
+            user_id: req.session.user_id,
         });
      res.status(200).json(todoData);
-    } catch (err){
+    } catch (err) {
     res.status(400).json(err);
 }
 });

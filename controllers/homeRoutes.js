@@ -89,6 +89,57 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+//todo
+// router.get('/toDo',withAuth, async (req, res) => {
+//   try {
+//     let todos;
+//     let Items;
+//     const todoData = await Todo.findAll({ });
+//     const todoItemsData = await TodoItems.findAll({});
 
+//     if(todoData){
+//       todos = todoData.get({ plain: true });
+//     } 
+    
+//     if(todoItemsData) {
+//       Items = todoItemsData.get({ plain: true });
+//     }
+
+//     console.log(todos, Items)
+
+//     res.render('todo', {
+//       todos, 
+//       Items,
+//       logged_in: true
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+router.get('/toDo', withAuth, async (req, res) => { // the path to the /todos page with authorization
+  try {
+    const todoData = await User.findByPk(req.session.user_id, { // we search for the users model verses the todo/todo items model because we want the user to only see what they have done -- and not see what others have added. 
+      attributes: { exclude: ['password'] }, // exclude password so the password information is not included in the returned object
+      include: [{ model: Todo, TodoItems }], // include the todo and todo items information connected to the logged in user
+
+      order: [
+        [Todo, 'id', 'DESC'], // this I let for desc order based on the id, newest todo lists will populate to the top
+      ],
+     
+    });
+
+    const todos = todoData.get({ plain: true }); // returns the information you searched for in a json friendly format
+    console.log('TODOS LISTS FOR USERS!!',todos)
+
+    res.render('todo', { // renders this information to the todo handlebars file
+      todos: todos.todos, // the whole object that you just looked for -- we can then take information from this object and render it to the page
+      logged_in: true // the user has to be logged in to view this page or the items
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
 
