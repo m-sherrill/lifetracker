@@ -9,7 +9,7 @@ router.get('/', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Calendar }],
     });
-    console.log(calendarData.calendars)
+   
     
     res.status(200).json(calendarData.calendars);
   } catch (err) {
@@ -22,7 +22,7 @@ router.get('/', withAuth, async (req, res) => {
 // Get Calendar by ID
 router.get('/:id', async (req, res) => {
   try {
-    console.log(req.params.id)
+    
     const calendarData = await Calendar.findByPk(req.params.id);
     res.status(200).json(calendarData);
   } catch (err) {
@@ -46,7 +46,6 @@ router.post('/', async (req, res) => {
     console.log(newEvent)
     res.status(200).json(newEvent);
   } catch (err) {
-      console.log("in the ERROR!!!!", err)
     res.status(400).json(err);
   }
 });
@@ -64,7 +63,6 @@ router.put('/:id', async (req, res) => {
     res.json(calendarData);
   }
   catch (err) {
-    console.log(err)
     res.status(500).json(err);
   }
 });
@@ -78,7 +76,6 @@ router.delete('/:id', async (req, res) => {
     });
     res.status(200).json(calendarData);
   } catch (err) {
-    console.log(err)
     res.status(500).json(err);
   }
 });
