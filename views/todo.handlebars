@@ -33,23 +33,25 @@
 
 </ul>
 
-
 <div id="todos" class="container-fluid flex flex-wrap justify-around">
 
-    {{#each todos}}
-    <span class='p-8 border-2 m-4 w-1/4 border-solid border-black bg-zinc-100'>
-        <p class='text-center text-2xl'>{{name}}</p>
-        {{#each this.todoItems}}
-{{this.name}} 
-<button id="todoItemDelete{{this.id}}" data-id="{{this.id}}" class="deleteItemBtn btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'">Delete</button><br/></br>
-  
-  
+  {{#each todos}}
+  <div
+    class='p-8 border-2 m-4 w-1/4 border-solid border-black bg-zinc-100'>
+    <div class='text-center text-2xl container-fluid flex justify-between'>{{name}}<button class="expand-one" data-id="{{id}}"><img src="./images/plus.png"></button></div><br /></br>
+<ul>
 
-{{/each}}
-      <input type="text" class="newTodoInput" id="todoItemTitle{{this.id}}" data-id="{{this.id}}" placeholder="New todo item.." /> <button id="todoItemBtn" data-id="{{this.id}}" class="btn addItemBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'">Add</button>
-  </span>
-    {{/each}}
+    {{#each this.todoItems}}
+      <li><div class="container-fluid flex justify-between content{{this.todo_id}}" id="todoContent">{{this.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="todoItemDelete{{this.todo_id}}" data-id="{{this.todo_id}}" class="deleteItemBtn"><img
+          src="./images/delete.png"></button></div></li>
+      {{/each}}
+      </ul>
+      <center><button id="todoItemBtn" data-id="{{this.id}}"
+          class="btn addItemBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'">Add</button>
+      </center>
+    
+  </div>
+  {{/each}}
 
 
-
-<script src="/js/toDo.js"></script>
+  <script src="/js/toDo.js"></script>
