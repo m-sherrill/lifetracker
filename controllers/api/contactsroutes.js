@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     const contactsData = await Contacts.findAll(
     );
-    console.log(contactsData)
+    console.log("contacts data is", contactsData)
     res.status(200).json(contactsData);
   } catch (err) {
     console.log(err)
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
       notes: req.body.notes,
       user_id: req.session.user_id,
     });
-    console.log(newContact)
+    console.log("new contact is", newContact)
     res.status(200).json(newContact);
   } catch (err) {
     res.status(400).json(err);
@@ -49,7 +49,8 @@ router.post('/', async (req, res) => {
 });
 
 // Update a Contact
-router.put('/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => {
+  console.log('REQ.BODY!',req.body)
   try {
     const contactData = await Contacts.update(req.body,
       {
@@ -59,6 +60,7 @@ router.put('/:id', async (req, res) => {
       }
     )
     res.json(contactData);
+    console.log ("Contact data is ", contactData)
   }
   catch (err) {
     console.log(err)
