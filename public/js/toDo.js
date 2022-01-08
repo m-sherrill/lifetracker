@@ -15,7 +15,7 @@ $("#todoBtn").on("click", async function () {
       });
       console.log(response)
       if (response.ok) {
-        // document.location.replace('/toDo');
+        document.location.replace('/toDo');
           console.log("success", response)
       } else {
           console.log('todo failed');

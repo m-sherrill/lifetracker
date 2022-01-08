@@ -22,10 +22,8 @@ $("#noteBtn").on("click", async function () {
 })
 
 $('.deleteNote').on("click", async function () {
-    event.preventDefault(),
-        console.log("click")
+    event.preventDefault()
     let id = $(this).data("id")
-    console.log(id)
     const response = await fetch(`/api/notes/${id}`, {
         method: 'DELETE',
     });
@@ -47,9 +45,9 @@ $('.updateBtn').on("click", function () {
 
 $(".updateNoteBtn").on("click", async function () {
     let id = $(this).data("id")
-    const title = $(`#noteTitleUpdate${id}`).val()
-    const content = $(`#noteContentUpdate${id}`).val().trim()
-    console.log(title)
+    const title = $(`#updateNoteModal${id} :input#noteTitleUpdate${id}`).val()
+    const content = $(`#updateNoteModal${id} :input#noteContentUpdate${id}`).val().trim()
+
 
 
 

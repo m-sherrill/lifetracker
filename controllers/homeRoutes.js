@@ -7,19 +7,22 @@ const withAuth = require('../utils/auth')
 
 //Homepage Route
 router.get('/', async (req, res) => {
+
   try {
-    const userData = await User.findAll({
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
+      raw: true
     });
 
-    const users = userData.map((user) => user.get({ plain: true }));
+
 
     res.render('home', {
-      users,
+      users: userData,
       // Pass the logged in flag to the template
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log('errrrrr', err)
     res.status(500).json(err);
   }
 });

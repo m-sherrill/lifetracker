@@ -3,11 +3,11 @@ $("#newContactBtn").on("click", async function () {
     
     event.preventDefault();
 
-    const first_name = $('#firstName-contact').val().trim();
-    const last_name = $('#lastName-contact').val().trim()
-    const phone = $('#phone-contact').val().trim()
-    const email = $('#email-contact').val().trim()
-    const notes = $('#notes-contact').val().trim()
+    const first_name = $(`#firstName-contact`).val().trim();
+    const last_name = $(`#lastName-contact`).val().trim()
+    const phone = $(`#phone-contact`).val().trim()
+    const email = $(`#email-contact`).val().trim()
+    const notes = $(`#notes-contact`).val().trim()
     
     if (first_name && last_name && phone && email && notes) {
         const response = await fetch('/api/contacts', {
@@ -25,22 +25,25 @@ $("#newContactBtn").on("click", async function () {
     }
 })
 
+// const updateUser = (first_name,last_name,phone,email,notes)
+
 // Update a contact fetch
 $(".updateContact").on("click", async function () {
     let id = $(this).data("id")
-    console.log(id)
-    const first_name = $('#firstName-Ucontact').val().trim();
-    const last_name = $('#lastName-Ucontact').val().trim()
-    const phone = $('#phone-Ucontact').val().trim()
-    const email = $('#email-Ucontact').val()
-    const notes = $('#notes-Ucontact').val().trim()
+    console.log('ID TO CONTACT TO CHANGE!',id)
+    const first_name = $(`#updateContactModal${id} :input#firstName-Ucontact`).val().trim();
+    const last_name = $(`#updateContactModal${id} :input#lastName-Ucontact`).val().trim()
+    const phone = $(`#updateContactModal${id} :input#phone-Ucontact`).val().trim()
+    const email = $(`#updateContactModal${id} :input#email-Ucontact`).val()
+    const notes = $(`#updateContactModal${id} :input#notes-Ucontact`).val().trim()
 
     const response = await fetch(`/api/contacts/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         body: JSON.stringify({ first_name, last_name, phone, email, notes }),
         headers: { 'Content-Type': 'application/json' },
     });
-    console.log(response.body)
+
+    console.log(`response body is`, response.body)
     if (response.ok) {
         document.location.replace('/contacts');
         console.log("success", response)
