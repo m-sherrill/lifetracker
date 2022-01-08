@@ -42,7 +42,6 @@ router.get('/notes', withAuth, async (req, res) => {
 
     const users = userData.get({ plain: true });
 
-
     res.render('notes', {
       users,
       logged_in: true
@@ -67,7 +66,6 @@ router.get('/contacts', withAuth, async (req, res) => {
     });
 
     const users = userData.get({ plain: true });
-
 
     res.render('contacts', {
       users,
@@ -123,9 +121,7 @@ router.get('/todo', withAuth, async (req, res) => { // the path to the /todos pa
       }],
     })
 
-
     const users = todoData.get({ plain: true }); // returns the information you searched for in a json friendly format
-
 
     console.log('TODOS LISTS FOR USERS!!', users.todos, "OBJECT TODO FOR USERS ENDS!!")
     res.render('todo', { // renders this information to the todo handlebars file
