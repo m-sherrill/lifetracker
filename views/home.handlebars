@@ -1,15 +1,16 @@
 <section class="content">
     <h1 class='text-center text-5xl'> Welcome to your Lifetracker! </h1>
-    {{!-- {{#each users as |user|}} --}}
-    {{#if logged_in}}
-    <h2 class='text-center text-2xl'>Hello, {{users.first_name}}!</h2>
-    {{else}}
-    <h2>make sure to sign in</h2>
-    {{/if}}
 
-    {{!-- {{/each}} --}}
-    <span class='flex justify-between m-40 border-4 border-solid border-black'>
-        <a class='hover:text-slate-300' href='/notes'>
+    {{#if logged_in}}
+    <h2 class='text-center text-2xl mt-16'>Hello, {{users.first_name}}!</h2>
+    {{else}}
+    <h2 class='text-center text-2xl mt-12'>Make sure to sign in!!</h2>
+    {{/if}}
+    <div class='flex place-content-center mt-16 '>
+        <img class='animate-spin' src='./images/lightning.png' alt='lightning' width="50" height='50'>
+    </div>
+    <span class='flex justify-around mt-16 border-4 border-solid border-black'>
+        <a class='hover:text-slate-300 focus:animate-ping' href='/notes'>
             Notes
         </a>
         <a class='hover:text-slate-300' href="/calendar">
