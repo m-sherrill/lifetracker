@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
           
                     
             });
-        res.status(200).json(todoData);
+        res.status(200).json(todoData);''
     } catch (err) {
         console.log(err)
         res.status(500).json(err);
@@ -37,9 +37,10 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
+        console.log("IN ADD ITEMS ROUTE!!!!")
         console.log('REQ.body!!!', req.body)
         const todoData = await Todo.create({
-            name: req.body.title,
+            name: req.body.name,
             user_id: req.session.user_id,
         });
      res.status(200).json(todoData);
@@ -86,7 +87,19 @@ router.delete('/:id', async (req, res) => {
 
 
 
-
+router.post('/items', async (req, res) => {
+    try {
+        console.log('REQ.body!!!', req.body)
+        const todoData = await TodoItems.create({
+            name: req.body.name,
+            todo_id: req.body.id,
+            user_id: req.session.user_id,
+        });
+     res.status(200).json(todoData);
+    } catch (err) {
+    res.status(400).json(err);
+}
+});
 
 
 
