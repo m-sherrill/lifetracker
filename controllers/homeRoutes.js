@@ -65,7 +65,7 @@ router.get('/contacts', withAuth, async (req, res) => {
     });
 
     const users = userData.get({ plain: true });
-    console.log(users)
+    console.log('user from DB!!!',users)
 
     res.render('contacts', {
       users,
