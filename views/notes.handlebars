@@ -49,13 +49,16 @@
         <span class='p-8 border-2 m-4 w-1/4 border-solid border-black bg-zinc-100'>
             <p class='text-center text-2xl'>{{note.title}}</p>
             <p class='text-center'>{{note.content}}</p>
-            <button
-                class='btn deleteNote btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
-                data-id='{{note.id}}'>
-                Delete</button>
-            <button
-                class='btn updateBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
-                data-id='{{note.id}}'>Update</button>
+            <span class='flex justify-around'>
+                <button
+                    class='btn updateBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
+                    data-id='{{note.id}}'>Update</button>
+                <button
+                    class='btn deleteNote btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
+                    data-id='{{note.id}}'>
+                    Delete</button>
+            </span>
+
             <ul class='text-center'>Created at: {{format_date note.createdAt}}</ul>
 
             <ul class='text-center text-xs'>Last Update: {{format_date note.updatedAt}}</ul>
