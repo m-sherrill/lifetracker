@@ -7,19 +7,22 @@ const withAuth = require('../utils/auth')
 
 //Homepage Route
 router.get('/', async (req, res) => {
+
   try {
-    const userData = await User.findAll({
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
+      raw: true
     });
 
-    const users = userData.map((user) => user.get({ plain: true }));
+
 
     res.render('home', {
-      users,
+      users: userData,
       // Pass the logged in flag to the template
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log('errrrrr', err)
     res.status(500).json(err);
   }
 });
@@ -38,6 +41,7 @@ router.get('/notes', withAuth, async (req, res) => {
     });
 
     const users = userData.get({ plain: true });
+
 
     res.render('notes', {
       users,
@@ -63,6 +67,7 @@ router.get('/contacts', withAuth, async (req, res) => {
     });
 
     const users = userData.get({ plain: true });
+
 
     res.render('contacts', {
       users,
@@ -106,8 +111,10 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+
 //todo route
 router.get('/todo', withAuth, async (req, res) => { // the path to the /todos page with authorization
+
   try {
     const todoData = await User.findByPk(req.session.user_id, { // we search for the users model verses the todo/todo items model because we want the user to only see what they have done -- and not see what others have added. 
       attributes: { exclude: ['password'] }, // exclude password so the password information is not included in the returned object // include the todo and todo items information connected to the logged in user
@@ -116,7 +123,9 @@ router.get('/todo', withAuth, async (req, res) => { // the path to the /todos pa
       }],
     })
 
+
     const users = todoData.get({ plain: true }); // returns the information you searched for in a json friendly format
+
 
     console.log('TODOS LISTS FOR USERS!!', users.todos, "OBJECT TODO FOR USERS ENDS!!")
     res.render('todo', { // renders this information to the todo handlebars file
