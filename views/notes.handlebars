@@ -1,64 +1,68 @@
 <span class='flex flex-col'>
     <span class='flex justify-around self-center border-4 border-solid border-black w-1/2'>
-        <a class='hover:text-slate-300' href='/notes'>
+
+        <a class='hover:text-slate-300 focus:animate-ping' href='/notes'>
             Notes
         </a>
-        <a class='hover:text-slate-300' href="/calendar">
+        <a class='hover:text-slate-300 focus:animate-ping' href="/calendar">
             <div>Calendar</div>
         </a>
-        <a class='hover:text-slate-300' href="/contacts">
+        <a class='hover:text-slate-300 focus:animate-ping' href="/contacts">
             <div>Contacts</div>
         </a>
-        <a class='hover:text-slate-300' href="/todos">
+
+        <a class='hover:text-slate-300 focus:animate-ping' href="/toDo">
+
             <div>To DOs!</div>
         </a>
     </span>
-
-    <header class='text-center text-7xl'>Notes</header>
-
-
-    <div class="container my-3 text-center">
-        <div class="card">
-            <div class="card-body flex flex-col place-content-center">
-
-                <div class=" flex flex-col place-content-center">
-                    <input class="self-center border-solid border-2 border-black" id="noteTitle" rows="3"
-                        placeholder='Note Title' />
-                    <textarea class="self-center my-2 w-1/2 border-solid border-2 border-black" rows='5' id="noteBody">
-                   </textarea>
-                </div>
-                <button
-                    class="btn btn-primary self-center  px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
-                    id="noteBtn">
-                    Add Note
-                </button>
-            </div>
-        </div>
 </span>
-<hr>
-<h1 class='text-4xl'>Your Notes</h1>
-<hr>
 
-<div id="notes" class="container-fluid flex flex-wrap justify-around">
+<header class='text-center text-7xl'>Notes</header>
 
-    {{#each users.notes as |note|}}
-    <span class='p-8 border-2 m-4 w-1/4 border-solid border-black bg-zinc-100'>
-        <p class='text-center text-2xl'>{{note.title}}</p>
-        <p class='text-center'>{{note.content}}</p>
-        <button
-            class='btn deleteNote btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
-            data-id='{{note.id}}'>
-            Delete</button>
-        <button
-            class='btn updateBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
-            data-id='{{note.id}}'>Update</button>
-        <ul class='text-center'>Created at: {{format_date note.createdAt}}</ul>
 
-        <ul class='text-center text-xs'>Last Update: {{format_date note.updatedAt}}</ul>
+<div class="container my-3 text-center">
+    <div class="card">
+        <div class="card-body flex flex-col place-content-center">
+
+            <div class=" flex flex-col place-content-center">
+                <input class="self-center border-solid border-2 border-black" id="noteTitle" rows="3"
+                    placeholder='Note Title' />
+                <textarea class="self-center my-2 w-1/2 border-solid border-2 border-black" rows='5' id="noteBody">
+                   </textarea>
+            </div>
+            <button
+                class="btn btn-primary self-center  px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
+                id="noteBtn">
+                Add Note
+            </button>
+        </div>
+    </div>
     </span>
-    {{/each}}
+    <hr>
+    <h1 class='text-4xl py-4'>Your Notes</h1>
+    <hr>
 
-</div>
+    <div id="notes" class="container-fluid flex flex-wrap justify-around">
+
+        {{#each users.notes as |note|}}
+        <span class='p-8 border-2 m-4 w-1/4 border-solid border-black bg-zinc-100'>
+            <p class='text-center text-2xl'>{{note.title}}</p>
+            <p class='text-center'>{{note.content}}</p>
+            <button
+                class='btn deleteNote btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
+                data-id='{{note.id}}'>
+                Delete</button>
+            <button
+                class='btn updateBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'
+                data-id='{{note.id}}'>Update</button>
+            <ul class='text-center'>Created at: {{format_date note.createdAt}}</ul>
+
+            <ul class='text-center text-xs'>Last Update: {{format_date note.updatedAt}}</ul>
+        </span>
+        {{/each}}
+
+    </div>
 </div>
 
 

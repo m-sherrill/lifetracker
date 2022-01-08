@@ -6,16 +6,15 @@ const withAuth = require('../utils/auth')
 
 //Homepage Route
 router.get('/', async (req, res) => {
-  console.log('we hit hte route!')
+
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       raw: true
     });
 
-    //const users = userData.map((user) => user.get({ plain: true }));
-    console.log('session!!', req.session)
-    console.log('users!!!', userData)
+
+
     res.render('home', {
       users: userData,
       // Pass the logged in flag to the template
