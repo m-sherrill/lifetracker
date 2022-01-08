@@ -74,9 +74,22 @@ $(".updateTODOBtn").on("click", async function () {
 
 $(".addItemBtn").on("click", async function () {
 
+
+    const { value: name } = await Swal.fire({
+        title: 'What item would you like to add?',
+        input: 'text',
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return 'You need to write something!'
+          }
+        }
+      })
+      console.log(name)
     event.preventDefault();
+
     let id = $(this).data("id")
-    const name = $(`#todoItemTitle${id}`).val();
+    // const name = $(`#todoItemTitle${id}`).val();
     
     console.log("CLICK!! TODO ITEMS!! " + id + " after ID", + name)
     
@@ -141,3 +154,8 @@ $(".addItemBtn").on("click", async function () {
     }
   
   })
+
+  $('.expand-one').click(function(){
+    let id = $(this).data("id")
+    $(`.content${id}`).slideToggle('slow');
+});

@@ -104,3 +104,7 @@ padding: 10px;
  .fc-today-bg-color {
   background-color: lightblue;
 }
+
+#todoContent {
+  display:none;
+}
