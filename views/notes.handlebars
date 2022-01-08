@@ -75,12 +75,12 @@
                 id="update-contact-form">
                 <div class="form-group m-2">
                     <label for="noteTitleUpdate">Title Update</label>
-                    <input class="form-input border-2 border-solid border-black" type="text"
+                    <input value="{{notes.title}}" class="form-input border-2 border-solid border-black" type="text"
                         id="noteTitleUpdate{{notes.id}}" />
                 </div>
                 <div class="form-group m-2">
                     <label for="noteContentUpdate">Note Content</label>
-                    <input class="form-input border-2 border-solid border-black" type="text"
+                    <input value="{{notes.content}}"class="form-input border-2 border-solid border-black" type="text"
                         id="noteContentUpdate{{notes.id}}" />
                 </div>
             </form>

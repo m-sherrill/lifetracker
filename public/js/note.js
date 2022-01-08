@@ -45,8 +45,8 @@ $('.updateBtn').on("click", function () {
 
 $(".updateNoteBtn").on("click", async function () {
     let id = $(this).data("id")
-    const title = $(`#noteTitleUpdate${id}`).val()
-    const content = $(`#noteContentUpdate${id}`).val().trim()
+    const title = $(`#updateNoteModal${id} :input#noteTitleUpdate${id}`).val()
+    const content = $(`#updateNoteModal${id} :input#noteContentUpdate${id}`).val().trim()
 
 
 
