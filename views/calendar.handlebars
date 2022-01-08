@@ -1,18 +1,19 @@
-<span class='flex justify-between mb-16 border-4 border-solid border-black'>
-  <a class='hover:text-red-400' href='/notes'>
-    Notes
-  </a>
-  <a class='hover:text-red-400' href="/calendar">
-    <div>Calendar</div>
-  </a>
-  <a class='hover:text-red-400' href="/contacts">
-    <div>Contacts</div>
-  </a>
-  <a class='' href="https://google.com">
-    <div>To DOs!</div>
-  </a>
+<span class='flex flex-col'>
+  <span class='flex self-center justify-around w-1/2 mb-16 border-4 border-solid border-black'>
+    <a class='hover:text-slate-300' href='/notes'>
+      Notes
+    </a>
+    <a class='hover:text-slate-300' href="/calendar">
+      <div>Calendar</div>
+    </a>
+    <a class='hover:text-slate-300' href="/contacts">
+      <div>Contacts</div>
+    </a>
+    <a class='hover:text-slate-300' href="/todos">
+      <div>To DOs!</div>
+    </a>
+  </span>
 </span>
-
 <div id="newEventmodal">
   <div class="calendar-addevent">
     <div class=' border-black border-2 border-solid bg-zinc-100 '>
@@ -46,6 +47,12 @@
 
   </div>
 
-</div><br/><br/>
-<center>To move an event, drag and drop it. <br/>To delete an event, click it.</center>
+
+</div>
+
+
+<div id="calendar"></div>
+
+</div><br /><br />
+<center>To move an event, drag and drop it. <br />To delete an event, click it.</center>
 <div id="calendar"></div>

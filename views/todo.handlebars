@@ -1,3 +1,19 @@
+<span class='flex flex-col'><span
+    class='flex self-center w-1/2 justify-around mb-16 border-4 border-solid border-black'>
+    <a class='hover:text-slate-300' href='/notes'>
+      Notes
+    </a>
+    <a class='hover:text-slate-300' href="/calendar">
+      <div>Calendar</div>
+    </a>
+    <a class='hover:text-slate-300' href="/contacts">
+      <div>Contacts</div>
+    </a>
+    <a class='hover:text-slate-300' href="/todos">
+      <div>To DOs!</div>
+    </a>
+  </span>
+</span>
 <section class=content>
   <a href="/todo">
     <header>To Do List</header>
@@ -6,17 +22,15 @@
 
 <div id="myDIV" class="header">
   <h2>My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
+  <input type="text" id="todoTitle" placeholder="Title...">
+  <button id="todoBtn" class="addBtn">Add</button>
 </div>
 
 <ul id="myList">
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-  <li>Placeholder</li>
-</ul>
 
-<script src="Project-2\public\js\toDo.js"></script>
+</ul>
+{{#each todos}}
+<li>{{name}}</li>
+{{/each}}
+
+<script src="/js/toDo.js"></script>

@@ -1,16 +1,26 @@
 <section class="content">
     <h1 class='text-center text-5xl'> Welcome to your Lifetracker! </h1>
+    {{!-- {{#each users as |user|}} --}}
+    {{#if logged_in}}
+    <h2 class='text-center text-2xl'>Hello, {{users.first_name}}!</h2>
+    {{else}}
+    <h2>make sure to sign in</h2>
+    {{/if}}
+
+    {{!-- {{/each}} --}}
     <span class='flex justify-between m-40 border-4 border-solid border-black'>
-        <a class='hover:text-red-400' href='/notes'>
+        <a class='hover:text-slate-300' href='/notes'>
             Notes
         </a>
-        <a class='hover:text-red-400' href="/calendar">
+        <a class='hover:text-slate-300' href="/calendar">
             <div>Calendar</div>
         </a>
-        <a class='hover:text-red-400' href="/contacts">
+        <a class='hover:text-slate-300' href="/contacts">
             <div>Contacts</div>
         </a>
-        <a class='hover:text-red-400' href="/todos">
+
+        <a class='hover:text-slate-300' href="/toDo">
+
             <div>To DOs!</div>
         </a>
     </span>
