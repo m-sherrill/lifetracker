@@ -2,7 +2,7 @@
     <h1 class='text-center text-5xl'> Welcome to your Lifetracker! </h1>
 
     {{#if logged_in}}
-    <h2 class='text-center text-2xl mt-16'>Hello, {{users.first_name}}!</h2>
+    <h2 class='text-center text-2xl mt-16 capitalize'>Welcome {{users.first_name}}!</h2>
     {{else}}
     <h2 class='text-center text-2xl mt-12'>Make sure to sign in!!</h2>
     {{/if}}
