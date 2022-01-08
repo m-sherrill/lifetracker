@@ -102,23 +102,23 @@
       <form class="form update-contact-form m-4 border-black border-2 bg-zinc-50 border-solid" id="update-contact-form">
         <div class="form-group m-2">
           <label for="firstName-Ucontact">First Name</label>
-          <input class="form-input border-2 border-solid border-black" type="text" id="firstName-Ucontact" />
+          <input value={{contacts.first_name}} class="form-input border-2 border-solid border-black" type="text" id="firstName-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="lastName-Ucontact">Last Name</label>
-          <input class="form-input border-2 border-solid border-black" type="text" id="lastName-Ucontact" />
+          <input value={{contacts.last_name}} class="form-input border-2 border-solid border-black" type="text" id="lastName-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="phone-Ucontact">Phone Number</label>
-          <input class="form-input border-2 border-solid border-black" type="text" id="phone-Ucontact" />
+          <input  value={{contacts.phone}} class="form-input border-2 border-solid border-black" type="text" id="phone-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="email-Ucontact">Email Address</label>
-          <input class="form-input border-2 border-solid border-black" type="email" id="email-Ucontact" />
+          <input value={{contacts.email}}  class="form-input border-2 border-solid border-black" type="email" id="email-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="notes-Ucontact">Notes</label>
-          <input class="form-input border-2 border-solid border-black" type="text" id="notes-Ucontact" />
+          <input  value={{contacts.notes}} class="form-input border-2 border-solid border-black" type="text" id="notes-Ucontact" />
         </div>
         <div class="form-group m-2">
           <button
