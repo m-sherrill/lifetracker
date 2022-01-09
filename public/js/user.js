@@ -56,40 +56,34 @@ $("#loginBtn").on("click", async function () {
 
 
 // Get the modal
-var modal = document.getElementById("loginModal");
-// Get the button that opens the modal
-var loginBtnOpen = document.getElementById("loginBtnOpen");
-var signUpBtn = document.getElementById("signUpBtn");
-var closeBtn = document.getElementsByClassName("close")[0];
+var modal = document.getElementById("loginModal")
+
 
 // When the user clicks on the button, open the modal
-loginBtnOpen.onclick = function () {
+$("#loginBtnOpen").on("click", function () {
     event.preventDefault();
     console.log('click')
     modal.style.display = "block";
-}
+})
 
 // When the user clicks on <span> (x), close the modal
-closeBtn.onclick = function () {
+$('.close').on("click", function () {
     event.preventDefault();
     modal.style.display = "none";
-}
+})
 
 var modal2 = document.getElementById("signUpModal");
-// Get the button that opens the modal
-var loginBtnOpen = document.getElementById("signUpBtnOpen");
-var signUpBtn = document.getElementById("signUpBtn");
-var closeBtn2 = document.getElementsByClassName("close2")[0];
+
 
 // When the user clicks on the button, open the modal
-loginBtnOpen.onclick = function () {
+$("#signUpBtnOpen").on("click", function () {
     event.preventDefault();
     console.log('click')
     modal2.style.display = "block";
-}
+})
 
 // When the user clicks on <span> (x), close the modal
-closeBtn2.onclick = function () {
+$(".close2").on('click', function () {
     event.preventDefault();
     modal2.style.display = "none";
-}
+})
