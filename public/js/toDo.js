@@ -1,3 +1,5 @@
+// todo lists ******** //
+
 // add new todo list
 $("#todoBtn").on("click", async function () {
 
@@ -34,20 +36,13 @@ $('.deletetodo').on("click", async function () {
   });
 
   if (response.ok) {
-      document.location.replace('/todos');
+      document.location.replace('/todo');
   } else {
       alert('Failed to delete todo');
   }
 })
 
-$('.updateBtn').on("click", function () {
-  let id = $(this).data("id")
-  event.preventDefault();
-  console.log('click')
-  $(`#updateTODOModal${id}`).css("display", "block")
-})
-
-
+// update todo list name
 $(".updateTODOBtn").on("click", async function () {
   let id = $(this).data("id")
   console.log(id)
@@ -61,7 +56,7 @@ $(".updateTODOBtn").on("click", async function () {
   });
   console.log(response.body)
   if (response.ok) {
-      document.location.replace('/todos');
+      document.location.replace('/todo');
       console.log("success", response)
   } else {
       console.log('Failed to create a todo');
@@ -69,12 +64,11 @@ $(".updateTODOBtn").on("click", async function () {
 
 })
 
-// todo items
+// todo items ******** //
 
-
+// Add items to a list
 $(".addItemBtn").on("click", async function () {
-
-
+    event.preventDefault();
     const { value: name } = await Swal.fire({
         title: 'What item would you like to add?',
         input: 'text',
@@ -85,14 +79,8 @@ $(".addItemBtn").on("click", async function () {
           }
         }
       })
-      console.log(name)
-    event.preventDefault();
 
-    let id = $(this).data("id")
-    // const name = $(`#todoItemTitle${id}`).val();
-    
-    console.log("CLICK!! TODO ITEMS!! " + id + " after ID", + name)
-    
+    let id = $(this).data("id")    
     if (name) {
         console.log('ABOUT TO SAVE TODO SMACKING THE ROUTE!!')
         const response = await fetch('/api/todos/items', {
@@ -100,63 +88,68 @@ $(".addItemBtn").on("click", async function () {
             body: JSON.stringify({ name, id }),
             headers: { 'Content-Type': 'application/json' },
         });
-        console.log(response)
         if (response.ok) {
-          document.location.replace('/toDo');
-            console.log("success", response)
+          document.location.replace('/todo');
         } else {
             console.log('todo failed');
         }
     }
   })
   
-  $('.deletetodo').on("click", async function () {
+  $('.deleteItemBtn').on("click", async function () {
     event.preventDefault(),
         console.log("click")
     let id = $(this).data("id")
     console.log(id)
-    const response = await fetch(`/api/todos/${id}`, {
+    var confirm = await Swal.fire({
+        title: 'Are you sure you would like to delete this item?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      })
+      console.log(confirm.isConfirmed)
+      if (confirm.isConfirmed === true) {
+    const response = await fetch(`/api/todos/items/${id}`, {
         method: 'DELETE',
     });
-  
-    if (response.ok) {
-        document.location.replace('/todos');
-    } else {
-        alert('Failed to delete todo');
-    }
+        if (response.ok) {
+            document.location.replace('/todo');
+        } else {
+            alert('Failed to delete todo');
+        }
+    
+}
+    
   })
   
-  $('.updateBtn').on("click", function () {
-    let id = $(this).data("id")
-    event.preventDefault();
-    console.log('click')
-    $(`#updateTODOModal${id}`).css("display", "block")
-  })
+
   
+//   $("").on("click", async function () {
+//     let id = $(this).data("id")
+//     console.log(id)
+//     const name = $('#todoNameUpdate').val()
+//     const user_id = $('#noteContentUpdate').val().trim()
   
-  $(".updateTODOBtn").on("click", async function () {
-    let id = $(this).data("id")
-    console.log(id)
-    const name = $('#todoNameUpdate').val()
-    const user_id = $('#noteContentUpdate').val().trim()
+//     const response = await fetch(`/api/todos/${id}`, {
+//         method: 'PUT',
+//         body: JSON.stringify({ name, user_id }),
+//         headers: { 'Content-Type': 'application/json' },
+//     });
+//     console.log(response.body)
+//     if (response.ok) {
+//         document.location.replace('/todo');
+//         console.log("success", response)
+//     } else {
+//         console.log('Failed to create a todo');
+//     }
   
-    const response = await fetch(`/api/todos/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({ name, user_id }),
-        headers: { 'Content-Type': 'application/json' },
-    });
-    console.log(response.body)
-    if (response.ok) {
-        document.location.replace('/todos');
-        console.log("success", response)
-    } else {
-        console.log('Failed to create a todo');
-    }
-  
-  })
+//   })
 
   $('.expand-one').click(function(){
       console.log("CLICKY CLICKY!!!!")
     let id = $(this).data("id")
-    $(`.content${id}`).slideToggle('slow');
+    $(`.content${id}`).slideToggle('slow')
 });
