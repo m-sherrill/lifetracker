@@ -33,21 +33,22 @@
 
 </ul>
 
-<div id="todos" class="container-fluid flex flex-wrap justify-around">
+<div id="todos" class="container flex flex-wrap justify-around">
 
   {{#each todos}}
   <div
-    class='p-8 border-2 m-4 w-1/4 border-solid border-black bg-zinc-100'>
-    <div class='text-center text-2xl container-fluid flex justify-between bg-slate-900'>{{name}}<button class="expand-one" data-id="{{id}}"><img src="./images/down.png"></button></div><br /></br>
+    class='p-8 border-2 m-4 w-1/4 border-solid border-black bg-zinc-100 '>
+    <div class='text-center text-2xl container-fluid flex justify-between'>{{name}}<button class="expand-one" data-id="{{id}}" data-tooltip="Collapse this list"><img src="./images/collapse.png"></button>
+   </div><br/><br/>
 <ul>
 
     {{#each this.todoItems}}
-      <li><div class="container-fluid flex justify-between content{{this.todo_id}}" id="todoContent">{{this.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="todoItemDelete{{this.todo_id}}" data-id="{{this.todo_id}}" class="deleteItemBtn"><img
+      <li><div class="container-fluid flex justify-between px-3 py-1 content{{this.todo_id}}" id="todoContent"><button>{{this.name}}</button><button id="todoItemDelete{{this.todo_id}}" class="itemDelete" data-id="{{this.todo_id}}" class="deleteItemBtn" data-tooltip="Clear this task"><img
           src="./images/xbox.png"></button></div></li>
       {{/each}}
       </ul>
       <center><br /><br /><div class="container-fluid flex justify-around"><button id="todoItemBtn" data-id="{{this.id}}"
-          class="addItemBtn"><img src="./images/plus.png"></button><button class="deletelist" data-id="{{id}}"><img src="./images/delete.png"></button></div>
+          class="addItemBtn" data-tooltip="Add new item to this list.."><img src="./images/plus.png"></button><button class="deletelist" data-id="{{id}}" data-tooltip="Delete this list"><img src="./images/delete.png"></button></div>
       </center>
     
   </div>

@@ -158,5 +158,5 @@ $(".addItemBtn").on("click", async function () {
   $('.expand-one').click(function(){
       console.log("CLICKY CLICKY!!!!")
     let id = $(this).data("id")
-    $(`.content${id}`).slideToggle('slow');
+    $(`.content${id}`).slideToggle('slow')
 });
