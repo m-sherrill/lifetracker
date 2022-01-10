@@ -125,31 +125,15 @@ $(".addItemBtn").on("click", async function () {
     
   })
   
+  var togSrc = [ "./images/down.png", "./images/collapse.png" ];
 
-  
-//   $("").on("click", async function () {
-//     let id = $(this).data("id")
-//     console.log(id)
-//     const name = $('#todoNameUpdate').val()
-//     const user_id = $('#noteContentUpdate').val().trim()
-  
-//     const response = await fetch(`/api/todos/${id}`, {
-//         method: 'PUT',
-//         body: JSON.stringify({ name, user_id }),
-//         headers: { 'Content-Type': 'application/json' },
-//     });
-//     console.log(response.body)
-//     if (response.ok) {
-//         document.location.replace('/todo');
-//         console.log("success", response)
-//     } else {
-//         console.log('Failed to create a todo');
-//     }
-  
-//   })
+  $(".tog").click(function() {
+     this.src =  togSrc.reverse()[0];
+  });
 
   $('.expand-one').click(function(){
       console.log("CLICKY CLICKY!!!!")
     let id = $(this).data("id")
     $(`.content${id}`).slideToggle('slow')
+    $(this).find('img').toggle();
 });
