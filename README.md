@@ -22,7 +22,11 @@ This is application was built in mind for the everyday person, meant to provide 
 
 ## Visuals of Finished Product
 
-![Project Demo](Animation.gif)
+![Project Demo](project.gif)
+![Project Demo](project1.gif)
+![Project Demo](project2.gif)
+![Project Demo](project3.gif)
+![Project Demo](project4.gif)
 
 ## Contact Information
 
