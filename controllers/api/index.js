@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const noteRoutes = require('./notesRoutes');
-const contactsRoutes = require('./contactsRoutes');
-const todoRoutes = require('./todoRoutes');
-const userRoutes = require('./userRoutes')
+const noteRoutes = require('./notesroutes');
+const contactsRoutes = require('./contactsroutes');
+const todoRoutes = require('./todoroutes');
+const userRoutes = require('./userroutes')
 const calendarRoutes = require('./calendarroutes')
 
 router.use('/notes', noteRoutes);

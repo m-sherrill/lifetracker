@@ -1,4 +1,4 @@
-<span class='flex flex-col'>
+<span class='flex flex-col'><br/>
   <span class='flex justify-around self-center border-4 border-solid border-black w-1/2'>
 
     <a class='hover:text-slate-300 focus:animate-ping' href='/notes'>
@@ -11,20 +11,16 @@
       <div>Contacts</div>
     </a>
 
-    <a class='hover:text-slate-300 focus:animate-ping' href="/toDo">
+    <a class='hover:text-slate-300 focus:animate-ping' href="/todo">
 
-      <div>To DOs!</div>
+      <div>Todo</div>
     </a>
   </span>
 </span>
-
+<br/>
 <p class='text-center text-6xl mb-16'>Contacts</p>
 
 <section class="content self-center" id="contacts">
-
-  <h2 class='text-center text-2xl'>Hello, {{users.first_name}}!</h2>
-
-
   <!-- The newContact Modal Trigger-->
   <span class='flex w-full place-content-center mt-8'>
     <button
@@ -32,23 +28,26 @@
       id="newContactOpen">Add a New Contact</button>
   </span>
   <br /><br />
-  <p class='text-center text-4xl'> Contacts List</p>
+     <hr>
+    <h1 class='text-center text-4xl py-4'>Your Contacts List</h1>
+    <hr>
   <br /><br /><span class='flex flex-wrap'>
     {{#each users.contacts as |contacts|}}
 
     <div class="contactName text-center w-1/5 border-solid border-2 border-black p-2 m-8 bg-zinc-100">
-      <h1 class='mt-4'>{{contacts.first_name}} {{contacts.last_name}}</h1>
+      <h1 class='mt-4 text-xl'><strong>{{contacts.first_name}} {{contacts.last_name}}</strong></h1>
       <div class="contactsContent">
-        Phone Number: {{contacts.phone}}<br />
-        Email Address: {{contacts.email}}<br />
-        Notes: {{contacts.notes}}<br />
+        <ul>
+        <li class="px-3 py-1"><strong>Phone Number:</strong> {{contacts.phone}}</li>
+        <li class="px-3 py-1"><strong>Email Address:</strong> {{contacts.email}}</li>
+        <li class="px-3 py-1"><strong>Notes:</strong> {{contacts.notes}}</li></ul>
         <span class='flex place-content-center justify-around mt-8 mb-0'>
           <button
             class="updateContactOpen btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
             data-id="{{contacts.id}}">Update</button> <button
             class="deleteContact btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
             data-id="{{contacts.id}}">Delete</button>
-        </span><br /><br />
+        </span><br />
       </div>
     </div>
     {{/each}}
