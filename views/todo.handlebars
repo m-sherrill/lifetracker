@@ -1,4 +1,4 @@
-<span class='flex flex-col'><br/>
+<span class='flex flex-col'><br />
   <span class='flex justify-around self-center border-4 border-solid border-black w-1/2'>
 
     <a class='hover:text-slate-300 focus:animate-ping' href='/notes'>
@@ -17,57 +17,63 @@
     </a>
   </span>
 </span>
-<br/>
+<br />
 <p class='text-center text-6xl mb-16'>Todo Lists</p>
 
 
 <div class="container-fluid my-3 text-center place-content-center">
-    <div class="card">
-        <div class="card-body flex flex-col place-content-center">
+  <div class="card">
+    <div class="card-body flex flex-col place-content-center">
 
-            <div class=" flex flex-col place-content-center">
-               <input class="self-center  border-solid border-2 border-black" id="todoTitle" rows="3"
-                    placeholder='New todo list.... ' /><br/>
-                    <button
-                class="btn btn-primary self-center  px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
-                id="todoBtn">
-                Add List
-            </button>
-            </div>
-           <br/>
-        </div>
+      <div class=" flex flex-col place-content-center">
+        <input class="self-center  border-solid border-2 border-black" id="todoTitle" rows="3"
+          placeholder='New todo list.... ' /><br />
+        <button
+          class="btn btn-primary self-center  px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
+          id="todoBtn">
+          Add List
+        </button>
+      </div>
+      <br />
     </div>
-    </span>
-    <hr>
-    <h1 class='text-4xl py-4'>Your Todo Lists</h1>
-    <hr>
-
-
-
-<div id="todos" class="container-fluid flex flex-wrap justify-around ">
-
-  {{#each todos}}
-  <div class='p-8 border-2 m-4 w-1/4 border-solid border-black bg-zinc-100'>
-    <div class='text-center text-2xl container-fluid flex justify-between'>{{name}}<button class="expand-one"
-        data-id="{{id}}" data-tooltip="Expand/Collapse List" ><img id="expand-collapse-img" src="./images/collapse.png"><img id="expand-collapse-img" src="./images/down.png" style="display:none"></button>
-    </div><br /><br />
-    <ul>
-
-      {{#each this.todoItems}}
-      <li>
-        <div class="container-fluid flex justify-between px-3 py-1 content{{this.todo_id}}" id="todoContent">
-          <button>{{this.name}}</button><button id="todoItemDelete{{this.id}}" class="deleteItemBtn"
-            data-id="{{this.id}}" data-tooltip="Clear this task"><img src="./images/xbox.png"></button></div>
-      </li>
-      {{/each}}
-    </ul>
-    <center><br /><br />
-      <div class="container-fluid flex justify-around"><button id="todoItemBtn" data-id="{{this.id}}" class='addItemBtn btn updateBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'>Add Item</button><button class='deletetodo btn updateBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'"
-          data-id="{{id}}">Delete List</button></div>
-    </center>
-
   </div>
-  {{/each}}
+  </span>
+  <hr>
+  <h1 class='text-4xl py-4'>Your Todo Lists</h1>
+  <hr>
 
 
-  <script src="/js/toDo.js"></script>
+
+  <div id="todos" class="container-fluid flex flex-wrap justify-around ">
+
+    {{#each todos}}
+    <div class='p-8 border-2 m-4 w-1/2 lg:w-1/4 border-solid border-black bg-zinc-100 md:w-1/3'>
+      <div class='text-center text-2xl container-fluid flex justify-between'>{{name}}<button class="expand-one"
+          data-id="{{id}}" data-tooltip="Expand/Collapse List"><img id="expand-collapse-img"
+            src="./images/collapse.png"><img id="expand-collapse-img" src="./images/down.png"
+            style="display:none"></button>
+      </div><br /><br />
+      <ul>
+
+        {{#each this.todoItems}}
+        <li>
+          <div class="container-fluid flex justify-between px-3 py-1 content{{this.todo_id}}" id="todoContent">
+            <button>{{this.name}}</button><button id="todoItemDelete{{this.id}}" class="deleteItemBtn"
+              data-id="{{this.id}}" data-tooltip="Clear this task"><img src="./images/xbox.png"></button>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+      <center><br /><br />
+        <div class="container-fluid flex justify-around"><button id="todoItemBtn" data-id="{{this.id}}"
+            class='addItemBtn btn updateBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'>Add
+            Item</button><button
+            class='deletetodo btn updateBtn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4'"
+          data-id=" {{id}}">Delete List</button></div>
+      </center>
+
+    </div>
+    {{/each}}
+
+
+    <script src="/js/toDo.js"></script>

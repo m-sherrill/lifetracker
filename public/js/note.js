@@ -11,12 +11,9 @@ $("#noteBtn").on("click", async function () {
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
         });
-        console.log(response)
+
         if (response.ok) {
             document.location.replace('/notes');
-            console.log("success", response)
-        } else {
-            console.log('note failed');
         }
     }
 })
@@ -38,7 +35,7 @@ $('.deleteNote').on("click", async function () {
 $('.updateBtn').on("click", function () {
     let id = $(this).data("id")
     event.preventDefault();
-    console.log('click')
+
     $(`#updateNoteModal${id}`).css("display", "block")
 })
 
@@ -56,12 +53,8 @@ $(".updateNoteBtn").on("click", async function () {
         body: JSON.stringify({ title, content }),
         headers: { 'Content-Type': 'application/json' },
     });
-    console.log(response.body)
     if (response.ok) {
         document.location.replace('/notes');
-        console.log("success", response)
-    } else {
-        console.log('Failed to update the note');
     }
 
 })
