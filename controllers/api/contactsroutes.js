@@ -6,10 +6,10 @@ router.get('/', async (req, res) => {
   try {
     const contactsData = await Contacts.findAll(
     );
-    console.log("contacts data is", contactsData)
+
     res.status(200).json(contactsData);
   } catch (err) {
-    console.log(err)
+
     res.status(500).json(err);
   }
 });
@@ -20,11 +20,11 @@ router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
-    console.log(req.params.id)
+
     const contactData = await Contacts.findByPk(req.params.id);
     res.status(200).json(contactData);
   } catch (err) {
-    console.log(err)
+
     res.status(500).json(err);
   }
 })
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
       notes: req.body.notes,
       user_id: req.session.user_id,
     });
-    console.log("new contact is", newContact)
+
     res.status(200).json(newContact);
   } catch (err) {
     res.status(400).json(err);
@@ -50,7 +50,6 @@ router.post('/', async (req, res) => {
 
 // Update a Contact
 router.patch('/:id', async (req, res) => {
-  console.log('REQ.BODY!',req.body)
   try {
     const contactData = await Contacts.update(req.body,
       {
@@ -60,10 +59,10 @@ router.patch('/:id', async (req, res) => {
       }
     )
     res.json(contactData);
-    console.log ("Contact data is ", contactData)
+
   }
   catch (err) {
-    console.log(err)
+
     res.status(500).json(err);
   }
 });
@@ -77,7 +76,7 @@ router.delete('/:id', async (req, res) => {
     });
     res.status(200).json(contactData);
   } catch (err) {
-    console.log(err)
+
     res.status(500).json(err);
   }
 });
