@@ -27,7 +27,6 @@ $("#todoBtn").on("click", async function () {
 $('.deletetodo').on("click", async function () {
   event.preventDefault();
   let id = $(this).data("id")
-<<<<<<< HEAD
   console.log(id)
   var confirm = await Swal.fire({
     title: 'Are you sure you would like to delete this item?',
@@ -44,12 +43,6 @@ $('.deletetodo').on("click", async function () {
       method: 'DELETE',
     })
   
-=======
-  const response = await fetch(`/api/todos/${id}`, {
-    method: 'DELETE',
-  });
-
->>>>>>> main
   if (response.ok) {
     document.location.replace('/todo');
   } else {
