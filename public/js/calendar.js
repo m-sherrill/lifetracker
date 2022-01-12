@@ -54,10 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         location.reload()
       })
-
-
-
-
     },
   })
   calendar.render();

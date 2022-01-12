@@ -21,11 +21,11 @@ Contacts.init(
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: false,
             validate: {
                 isEmail: true,
