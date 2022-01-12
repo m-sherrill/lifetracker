@@ -125,6 +125,8 @@ $('.deleteItemBtn').on("click", async function () {
     } else {
       alert('Failed to delete todo');
     }
+  }
+})
 
   $('.expand-one').click(function(){
       console.log("CLICKY CLICKY!!!!")
