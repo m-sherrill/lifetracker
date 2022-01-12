@@ -27,15 +27,36 @@ $("#todoBtn").on("click", async function () {
 $('.deletetodo').on("click", async function () {
   event.preventDefault();
   let id = $(this).data("id")
+<<<<<<< HEAD
+  console.log(id)
+  var confirm = await Swal.fire({
+    title: 'Are you sure you would like to delete this item?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  })
+  console.log(confirm.isConfirmed)
+  if (confirm.isConfirmed === true) {
+  const response = await fetch(`/api/todos/${id}`, {
+      method: 'DELETE',
+    })
+  
+=======
   const response = await fetch(`/api/todos/${id}`, {
     method: 'DELETE',
   });
 
+>>>>>>> main
   if (response.ok) {
     document.location.replace('/todo');
   } else {
     alert('Failed to delete todo');
   }
+}
+
 })
 
 // update todo list name
@@ -112,19 +133,9 @@ $('.deleteItemBtn').on("click", async function () {
       alert('Failed to delete todo');
     }
 
-  }
-
+  $('.expand-one').click(function(){
+      console.log("CLICKY CLICKY!!!!")
+    let id = $(this).data("id")
+    $(`.content${id}`).slideToggle('slow')
+    $(this).find('img').toggle();
 })
-
-var togSrc = ["./images/down.png", "./images/collapse.png"];
-
-$(".tog").click(function () {
-  this.src = togSrc.reverse()[0];
-});
-
-$('.expand-one').click(function () {
-
-  let id = $(this).data("id")
-  $(`.content${id}`).slideToggle('slow')
-  $(this).find('img').toggle();
-});

@@ -54,6 +54,17 @@ $('.deleteContact').on("click", async function () {
     event.preventDefault(),
         console.log("click")
     let id = $(this).data("id")
+    var confirm = await Swal.fire({
+        title: 'Are you sure you would like to delete this item?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      })
+      console.log(confirm.isConfirmed)
+      if (confirm.isConfirmed === true) {
     const response = await fetch(`/api/contacts/${id}`, {
         method: 'DELETE',
     });
@@ -62,6 +73,7 @@ $('.deleteContact').on("click", async function () {
         document.location.replace('/contacts');
     } else {
         alert('Failed to delete project');
+      }
     }
 })
 
