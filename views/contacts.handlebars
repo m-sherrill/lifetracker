@@ -1,5 +1,5 @@
-<span class='flex flex-col'><br/>
-  <span class='flex justify-around self-center border-4 border-solid border-black w-1/2'>
+<span class='flex flex-col'><br />
+  <span class='flex justify-around self-center border-4 border-solid border-black w-full sm:w-1/2'>
 
     <a class='hover:text-slate-300 focus:animate-ping' href='/notes'>
       Notes
@@ -17,7 +17,7 @@
     </a>
   </span>
 </span>
-<br/>
+<br />
 <p class='text-center text-6xl mb-16'>Contacts</p>
 
 <section class="content self-center" id="contacts">
@@ -28,19 +28,21 @@
       id="newContactOpen">Add a New Contact</button>
   </span>
   <br /><br />
-     <hr>
-    <h1 class='text-center text-4xl py-4'>Your Contacts List</h1>
-    <hr>
-  <br /><br /><span class='flex flex-wrap'>
+  <hr>
+  <h1 class='text-center text-4xl py-4'>Your Contacts List</h1>
+  <hr>
+  <br /><br /><span class='flex flex-wrap justify-around'>
     {{#each users.contacts as |contacts|}}
 
-    <div class="contactName text-center w-1/5 border-solid border-2 border-black p-2 m-8 bg-zinc-100">
+    <div
+      class="contactName  text-center w-1/2 md:w-1/4 lg:w-1/5 border-solid border-2 border-black p-2 m-8 bg-zinc-100">
       <h1 class='mt-4 text-xl'><strong>{{contacts.first_name}} {{contacts.last_name}}</strong></h1>
       <div class="contactsContent">
         <ul>
-        <li class="px-3 py-1"><strong>Phone Number:</strong> {{contacts.phone}}</li>
-        <li class="px-3 py-1"><strong>Email Address:</strong> {{contacts.email}}</li>
-        <li class="px-3 py-1"><strong>Notes:</strong> {{contacts.notes}}</li></ul>
+          <li class="px-3 py-1"><strong>Phone Number:</strong> {{contacts.phone}}</li>
+          <li class="px-3 py-1"><strong>Email Address:</strong> {{contacts.email}}</li>
+          <li class="px-3 py-1"><strong>Notes:</strong> {{contacts.notes}}</li>
+        </ul>
         <span class='flex place-content-center justify-around mt-8 mb-0'>
           <button
             class="updateContactOpen btn btn-primary px-2 rounded-lg bg-blue-300 border-black border-4 border-double hover:bg-blue-500 hover:border-solid hover:border-4"
@@ -107,23 +109,28 @@
         <div class="form-group m-2">
           <label for="firstName-Ucontact">First Name</label>
 
-          <input value="{{contacts.first_name}}" class="form-input border-2 border-solid border-black" type="text" id="firstName-Ucontact" />
+          <input value="{{contacts.first_name}}" class="form-input border-2 border-solid border-black" type="text"
+            id="firstName-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="lastName-Ucontact">Last Name</label>
-          <input value="{{contacts.last_name}}" class="form-input border-2 border-solid border-black" type="text" id="lastName-Ucontact" />
+          <input value="{{contacts.last_name}}" class="form-input border-2 border-solid border-black" type="text"
+            id="lastName-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="phone-Ucontact">Phone Number</label>
-          <input  value="{{contacts.phone}}" class="form-input border-2 border-solid border-black" type="text" id="phone-Ucontact" />
+          <input value="{{contacts.phone}}" class="form-input border-2 border-solid border-black" type="text"
+            id="phone-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="email-Ucontact">Email Address</label>
-          <input value="{{contacts.email}}"  class="form-input border-2 border-solid border-black" type="email" id="email-Ucontact" />
+          <input value="{{contacts.email}}" class="form-input border-2 border-solid border-black" type="email"
+            id="email-Ucontact" />
         </div>
         <div class="form-group m-2">
           <label for="notes-Ucontact">Notes</label>
-          <input  value="{{contacts.notes}}" class="form-input border-2 border-solid border-black" type="text" id="notes-Ucontact" />
+          <input value="{{contacts.notes}}" class="form-input border-2 border-solid border-black" type="text"
+            id="notes-Ucontact" />
 
         </div>
         <div class="form-group m-2">

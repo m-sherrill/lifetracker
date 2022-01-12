@@ -15,12 +15,15 @@ $("#signupBtn").on("click", async function () {
             body: JSON.stringify({ first_name, last_name, display_name, email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
-        console.log(response)
         if (response.ok) {
             document.location.replace('/');
-            console.log("success", response)
         } else {
-            console.log('Failed to sign up.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Any fool can use a computer',
+                text: 'Try again!'
+
+            })
         }
     }
 })
@@ -38,12 +41,11 @@ $("#loginBtn").on("click", async function () {
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
-        console.log(response)
+
         if (response.ok) {
             document.location.replace('/');
-            console.log("success", response)
+
         } else {
-            console.log('Failed to sign up.');
             Swal.fire({
                 icon: 'error',
                 title: 'Any fool can use a computer',
@@ -62,7 +64,7 @@ var modal = document.getElementById("loginModal")
 // When the user clicks on the button, open the modal
 $("#loginBtnOpen").on("click", function () {
     event.preventDefault();
-    console.log('click')
+
     modal.style.display = "block";
 })
 
@@ -78,7 +80,7 @@ var modal2 = document.getElementById("signUpModal");
 // When the user clicks on the button, open the modal
 $("#signUpBtnOpen").on("click", function () {
     event.preventDefault();
-    console.log('click')
+
     modal2.style.display = "block";
 })
 

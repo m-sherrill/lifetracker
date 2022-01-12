@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Calendar, User} = require('../../models');
+const { Calendar, User } = require('../../models');
 const withAuth = require('../../utils/auth')
 
 // Get all Calendar Items
@@ -9,11 +9,10 @@ router.get('/', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Calendar }],
     });
-   
-    
+
+
     res.status(200).json(calendarData.calendars);
   } catch (err) {
-    console.log(err)
     res.status(500).json(err);
   }
 });
@@ -22,11 +21,10 @@ router.get('/', withAuth, async (req, res) => {
 // Get Calendar by ID
 router.get('/:id', async (req, res) => {
   try {
-    
+
     const calendarData = await Calendar.findByPk(req.params.id);
     res.status(200).json(calendarData);
   } catch (err) {
-    console.log(err)
     res.status(500).json(err);
   }
 })
@@ -34,16 +32,15 @@ router.get('/:id', async (req, res) => {
 
 // Post New Calendar Event Associated with Specific User
 router.post('/', async (req, res) => {
-    
+
   try {
-      console.log("in new event try!!")
+
     const newEvent = await Calendar.create({
       title: req.body.title,
       start: req.body.start,
       end: req.body.end,
       user_id: req.session.user_id,
     });
-    console.log(newEvent)
     res.status(200).json(newEvent);
   } catch (err) {
     res.status(400).json(err);

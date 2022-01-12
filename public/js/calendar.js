@@ -62,14 +62,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 $('#newEventBtn').on("click", async function () {
-  console.log("in the new event!!")
   event.preventDefault();
 
   const title = $('#title-event').val().trim();
   const start = $('#start-event').val().trim()
   const end = $('#end-event').val().trim()
-
-  console.log(title, start, end)
 
   if (title && start && end) {
     const response = await fetch('/api/calendar', {
@@ -77,11 +74,9 @@ $('#newEventBtn').on("click", async function () {
       body: JSON.stringify({ title, start, end }),
       headers: { 'Content-Type': 'application/json' },
     });
-    console.log(response)
+
     if (response.ok) {
       document.location.replace('/calendar');
-    } else {
-      console.log('Failed to create a contact');
     }
   }
 })

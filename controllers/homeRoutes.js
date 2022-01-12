@@ -79,7 +79,7 @@ router.get('/contacts', withAuth, async (req, res) => {
 // calendar home route
 router.get('/calendar', withAuth, async (req, res) => {
   try {
-    console.log("in calendar route!!!")
+
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
@@ -116,17 +116,16 @@ router.get('/todo', withAuth, async (req, res) => { // the path to the /todos pa
   try {
     const todoData = await User.findByPk(req.session.user_id, { // we search for the users model verses the todo/todo items model because we want the user to only see what they have done -- and not see what others have added. 
       attributes: { exclude: ['password'] }, // exclude password so the password information is not included in the returned object // include the todo and todo items information connected to the logged in user
-      include: [{model: Todo, 
-        include: [{model: TodoItems}]
+      include: [{
+        model: Todo,
+        include: [{ model: TodoItems }]
       }],
     })
 
     const users = todoData.get({ plain: true }); // returns the information you searched for in a json friendly format
-
-    console.log('TODOS LISTS FOR USERS!!', users.todos, "OBJECT TODO FOR USERS ENDS!!")
     res.render('todo', { // renders this information to the todo handlebars file
       todos: users.todos,
-     // the whole object that you just looked for -- we can then take information from this object and render it to the page
+      // the whole object that you just looked for -- we can then take information from this object and render it to the page
       logged_in: true // the user has to be logged in to view this page or the items
     });
   } catch (err) {

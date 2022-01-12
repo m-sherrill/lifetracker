@@ -4,13 +4,13 @@ const { User } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
-      const userData = await User.findAll(
-          );
-          console.log(userData)
-      res.status(200).json(userData);
+    const userData = await User.findAll(
+    );
+
+    res.status(200).json(userData);
   } catch (err) {
-      console.log(err)
-      res.status(500).json(err);
+
+    res.status(500).json(err);
   }
 });
 
@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
-    console.log(err);
+
     res.status(500).json(err);
   }
 });
@@ -58,7 +58,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 

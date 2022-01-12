@@ -1,6 +1,6 @@
 // Add a new contact fetch
 $("#newContactBtn").on("click", async function () {
-    
+
     event.preventDefault();
 
     const first_name = $(`#firstName-contact`).val().trim();
@@ -8,7 +8,7 @@ $("#newContactBtn").on("click", async function () {
     const phone = $(`#phone-contact`).val().trim()
     const email = $(`#email-contact`).val().trim()
     const notes = $(`#notes-contact`).val().trim()
-    
+
     if (first_name && last_name && phone && email && notes) {
         const response = await fetch('/api/contacts', {
             method: 'POST',
@@ -30,7 +30,7 @@ $("#newContactBtn").on("click", async function () {
 // Update a contact fetch
 $(".updateContact").on("click", async function () {
     let id = $(this).data("id")
-    console.log('ID TO CONTACT TO CHANGE!',id)
+    console.log('ID TO CONTACT TO CHANGE!', id)
     const first_name = $(`#updateContactModal${id} :input#firstName-Ucontact`).val().trim();
     const last_name = $(`#updateContactModal${id} :input#lastName-Ucontact`).val().trim()
     const phone = $(`#updateContactModal${id} :input#phone-Ucontact`).val().trim()
@@ -43,19 +43,16 @@ $(".updateContact").on("click", async function () {
         headers: { 'Content-Type': 'application/json' },
     });
 
-    console.log(`response body is`, response.body)
+
     if (response.ok) {
         document.location.replace('/contacts');
-        console.log("success", response)
-    } else {
-        console.log('Failed to create a contact');
     }
 
 })
 
-$('.deleteContact').on("click", async function() {
+$('.deleteContact').on("click", async function () {
     event.preventDefault(),
-    console.log("click")
+        console.log("click")
     let id = $(this).data("id")
     var confirm = await Swal.fire({
         title: 'Are you sure you would like to delete this item?',
@@ -70,11 +67,11 @@ $('.deleteContact').on("click", async function() {
       if (confirm.isConfirmed === true) {
     const response = await fetch(`/api/contacts/${id}`, {
         method: 'DELETE',
-      });
-  
-      if (response.ok) {
+    });
+
+    if (response.ok) {
         document.location.replace('/contacts');
-      } else {
+    } else {
         alert('Failed to delete project');
       }
     }
@@ -84,7 +81,7 @@ $('.deleteContact').on("click", async function() {
 // When the user clicks on the button, open the modal
 $('#newContactOpen').on("click", function () {
     event.preventDefault();
-    console.log('click')
+
     $('#newContactmodal').css("display", "block")
 })
 
@@ -100,7 +97,7 @@ $(".close").on("click", function () {
 $('.updateContactOpen').on("click", function () {
     let id = $(this).data("id")
     event.preventDefault();
-    console.log('click')
+
     $(`#updateContactModal${id}`).css("display", "block")
 })
 
